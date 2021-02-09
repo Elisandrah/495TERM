@@ -1,3 +1,11 @@
+##TERM Project for Mothers in Alabama
+
+The goals of this project are
+1. Create an app to help mothers and nurses stay informed of their maternal health.
+2. Increase communication between mothers and nurses.
+3. Educate mothers on information relating to their pregnancy.
+
+
 ## Welcome to GitHub Pages
 
 You can use the [editor on GitHub](https://github.com/Elisandrah/495TERM/edit/gh-pages/index.md) to maintain and preview the content for your website in Markdown files.
