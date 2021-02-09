@@ -1,4 +1,4 @@
-##TERM Project for Mothers in Alabama
+## TERM Project for Mothers in Alabama
 
 The goals of this project are
 1. Create an app to help mothers and nurses stay informed of their maternal health.
