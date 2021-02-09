@@ -6,6 +6,8 @@ The goals of this project are
 3. Educate mothers on information relating to their pregnancy.
 
 
+# *All writing below this line is the default and can be referred to for help working on this page*
+
 ## Welcome to GitHub Pages
 
 You can use the [editor on GitHub](https://github.com/Elisandrah/495TERM/edit/gh-pages/index.md) to maintain and preview the content for your website in Markdown files.
