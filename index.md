@@ -7,7 +7,8 @@ The goals of this project are
 
 ## Frameworks APIs and Tools
 
-
+  React Native - Provides iOS and Android support for the app
+  
 
 
 # *All writing below this line is the default and can be referred to for help working on this page*
