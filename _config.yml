@@ -21,8 +21,8 @@ description: >- # this means to ignore newlines until "baseurl:"
   in conjunction with Dr.Lilanta Joy Bradley and Dr.Mercedes M. 
   Morales-Alemán.
 
-baseurl: "" # the subpath of your site, e.g. /blog
-url: "" # the base hostname & protocol for your site, e.g. http://example.com
+# baseurl: "/495TERM" # the subpath of your site, e.g. /blog
+# url: "https://elisandrah.github.io" # the base hostname & protocol for your site, e.g. http://example.com
 
 logo: resources/splash_img.png
 
