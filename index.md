@@ -17,7 +17,7 @@ layout: default
 
 ## Description of Experience
 
-  A user, whether a healtcare provider or an expecting mother, will log into one simple user interface 
+  A user, whether a healthcare provider or an expecting mother, will log into one simple user interface 
   in-app and will then be taken to two separate portals, one for data entry and parent 
   focused content (for the mothers), and another focused around data reviewal as well as 
   tele-medicine options. From these two portals, nurses, doctors, and mothers will be able to have 
