@@ -16,10 +16,11 @@ export default function App() {
 
   return (
     <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
+      <Image source={require('./splash_img.png')}/>
       <Text>This is a test</Text>
-      <Text style={{ fontFamily: "The text here has been edited" }}>Inter Black</Text>
-      <Text style={{ fontFamily: "We can now begin changing things within the app itself off of this" }}>
-        Inter SemiBoldItalic
+      <Text style={{ fontFamily: "Inter-Black" }}>Text below has been changed</Text>
+      <Text style={{ fontFamily: "Inter-SemiBoldItalic" }}>
+        We can now begin building the app from this starting point
       </Text>
     </View>
   );
