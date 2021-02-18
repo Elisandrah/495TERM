@@ -21,7 +21,7 @@ Within Android Studio boot up the virtual device that you have setup
 
 Under the experimental branch currently is the barebones template app that exists.
 Within the powershell navigate to the directory where the folder for the experimental branch is located.
-When inside that folder use the command "npm run android"
+When inside that folder use the command "expo start"
 
 This will launch a web browser that looks like this https://gyazo.com/f75be5b5826ca4a19799e45dd841bc4d
 Within here you can then run the app on either an android device, a web instance or if you have installed "Expo Go" on your iphone you can open the app there and after
