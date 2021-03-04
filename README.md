@@ -32,3 +32,6 @@ Website available at https://elisandrah.github.io/495TERM/
 Trello Board Page at https://trello.com/b/5knzppWR/scrum
 
 Drive Link at https://drive.google.com/drive/folders/1xtx7OhfWYVfCsI2np2iW1EDV8qj8G5UE?usp=sharing
+
+I have added some libraries/components to the repo. If you receive an error you can get them using yarn.
+Generally you can find whats needed by looking up at the import statements and then googling what the yarn command youll need is.
