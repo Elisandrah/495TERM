@@ -10,7 +10,7 @@ import Modal from 'react-native-modal'
 import * as GoogleSignIn from 'expo-google-sign-in';
 import { TextInput } from 'react-native-gesture-handler';
 
-const styles = StyleSheet.create({
+const styles = StyleSheet.create({ //I believe we will be able to create default styles that should make the code more readable later
 InputView: {
   flex: 1, 
   justifyContent: "center", 
@@ -18,10 +18,10 @@ InputView: {
 }
 });
 
-function HomeScreen({ navigation }){
+function HomeScreen({ navigation }){ //This is the default screen where you will arrive
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  return(
+  return( //Renders the image and places the login stuff
     <View style={StyleSheet.InputView}>
       <Image
         style={{width: 300, height: 250, resizeMode: 'contain'}}
@@ -49,10 +49,10 @@ function HomeScreen({ navigation }){
 }
 
 const Stack = createStackNavigator();
-const Tab = createBottomTabNavigator();
+const Tab = createBottomTabNavigator(); //The navigation tab container
 
 
-function App(){
+function App(){ //This holds the tabs that we can use to navigate. Each tab will move us to different screens which are defined further below
   return (
     <NavigationContainer>
       <Tab.Navigator>
@@ -66,7 +66,7 @@ function App(){
   );
 }
 
-export default App;
+export default App; //App is the default page that will show up on loading in, I believe it takes the uppermost Tab defined in the "App" function
 
 function Information({navigation}){
   const [fontsLoaded] = Font.useFonts({
