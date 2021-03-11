@@ -2,13 +2,13 @@ import AppLoading from 'expo-app-loading';
 import * as Font from 'expo-font';
 import React, { useState, Component } from 'react';
 import { Text, Button, View, Image, StyleSheet } from 'react-native';
-import Pdf from 'react-native-pdf';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs'
 import Modal from 'react-native-modal';
 
 import { TextInput } from 'react-native-gesture-handler';
+
 
 
 
