@@ -1,39 +1,56 @@
+import AppLoading from 'expo-app-loading';
+import * as Font from 'expo-font';
 import React, { useState, Component } from 'react';
 import { Text, Button, View, Image, StyleSheet } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+import {createBottomTabNavigator} from '@react-navigation/bottom-tabs'
+import Modal from 'react-native-modal';
+
 import { TextInput } from 'react-native-gesture-handler';
 
-export default class HomeScreen extends React.Component { //This is the default screen where you will arrive
-  render() 
-  {
-  	return( //Renders the image and places the login stuff
-    	<View style={StyleSheet.InputView}>
-    		<Image
-    			style={{width: 300, height: 250, resizeMode: 'contain'}}
-    			source={require('../assets/splash_img.png')} 
-    		/>
 
-    		<TextInput
-    			style={StyleSheet.InputView}
-    			placeholder="Email."
-    			placeholderTextColor = "#9E1B32"
-    			onChangeText={(email) => setEmail(email)}
-    		/>
 
-    		<TextInput
-    			style={StyleSheet.InputView}
-    			placeholder="Password."
-    			placeHolderTextColor = "#828A8F"
-    			secureTextEntry={true}
-    			onChangeText={(password) => setPassword(password)}
-    		/>
 
-    		<Button
-    			title="Log in"
-    			color = "#9E1B32"
-    		/>
-    		<Text>Home Screen</Text>
-  		</View>
-  		);
-  	}
+export default class CalendarScreen extends React.Component {
+  async componentDidMount() {
+     await Font.loadAsync({
+    'Inter-Black': require('../assets/fonts/Inter-Black.otf'),
+    'Inter-SemiBoldItalic':
+      'https://rsms.me/inter/font-files/Inter-SemiBoldItalic.otf?v=3.12',
+  });
   }
-  
+  render()
+  { 
+      return (
+          <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
+        <Text>Calendar</Text>
+            <Text>This will be the home tab</Text>
+            <Text style={styles.bold}>Basic entry page</Text>
+            <Text style={styles.italics}>
+              Good spot for important notifications and navigation
+            </Text>
+          </View>
+    );
+  }
+}
+
+const styles = StyleSheet.create
+({
+  container: {
+    flex: 1,
+    backgroundColor: '#fff',
+    alignItems: 'center',
+    justifyContent: 'center'
+  },
+
+  bold: {
+    fontFamily: 'Inter-Black',
+    fontSize: 20
+  },
+
+  italics: {
+    fontFamily: 'Inter-SemiBoldItalic',
+    fontSize: 15
+  }
+});

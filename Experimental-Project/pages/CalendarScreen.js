@@ -5,7 +5,7 @@ import { Text, Button, View, Image, StyleSheet } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs'
-import Modal from 'react-native-modal'
+import Modal from 'react-native-modal';
 
 import { TextInput } from 'react-native-gesture-handler';
 
