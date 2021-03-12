@@ -1,11 +1,13 @@
 import AppLoading from 'expo-app-loading';
 import * as Font from 'expo-font';
-import React, { setState, Component } from 'react';
+//import React, { setState, Component, useContext } from 'react';
+import * as React from 'react';
 import { Alert, Text, Button, View, Image, StyleSheet } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs'
 import Modal from 'react-native-modal'
+import App from '../App'
 
 import * as GoogleSignIn from 'expo-google-sign-in';
 import { TextInput } from 'react-native-gesture-handler';
@@ -21,17 +23,19 @@ export default class LoginScreen extends React.Component
       password: '',
     };
   }
-
+/*
   onLogin()
   {
-    const { username, password } = this.state;
+    //const { username, password } = this.state;
+    
 
-    navigation.navigate("TabContainer")
+    //navigation.navigate("TabContainer")
   }
-
+*/
   render() 
   {
     const { navigation } = this.props;
+    const { signIn } = React.useContext(AuthContext);
     return( //Renders the image and places the login stuff
       <View style={StyleSheet.InputView}>
         <Image
@@ -58,9 +62,8 @@ export default class LoginScreen extends React.Component
         <Button
           title="Log in"
           color = "#9E1B32"
-          onPress={() => navigation.navigate("TabContainer")}
+          onPress={() => signIn({ username, password })}
         />
-        <Text>Home Screen</Text>
       </View>
       );
     }

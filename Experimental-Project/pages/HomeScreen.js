@@ -1,6 +1,7 @@
 import AppLoading from 'expo-app-loading';
 import * as Font from 'expo-font';
-import React, { useState, Component } from 'react';
+import * as React from 'react';
+//import React, { Component } from 'react';
 import { Text, Button, View, Image, StyleSheet } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
