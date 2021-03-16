@@ -2,18 +2,92 @@ import AppLoading from 'expo-app-loading';
 import * as Font from 'expo-font';
 import * as React from 'react';
 //import React, { useState, Component } from 'react';
-import { Text, Button, View, Image, StyleSheet } from 'react-native';
+import { Text, Button, View, Image, StyleSheet, FlatList, SafeAreaView, TouchableWithoutFeedback } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-import {createBottomTabNavigator} from '@react-navigation/bottom-tabs'
-import Modal from 'react-native-modal';
 
-import { TextInput } from 'react-native-gesture-handler';
+const Stack = createStackNavigator();
+
+const DATA = [ //This generates the list, more can be added. Remember to add a navigation feature for it if adding more
+  {
+    id: 'FAQ',
+    title: 'FAQ',
+  },
+  {
+    id: 'Weekly Information',
+    title: 'Weekly Information',
+  },
+  {
+    id: 'Symptoms',
+    title: 'Searchable Symptoms',
+  },
+
+];
+
+function FAQ(){
+  return (
+    <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
+      <Text style={styles.bold}>FAQ</Text>
+      <Text style={styles.italics}>
+        Frequently Asked Questions will be present here
+      </Text>
+    </View>
+);
+}
+
+function Weekly(){ //This is the function where the weekly page begins
+  return (
+    <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
+      <Text style={styles.bold}>Weekly Information</Text>
+      <Text style={styles.italics}>
+        Weekly information will be present here
+      </Text>
+    </View>
+);
+}
+
+function Symptoms(){
+  return (
+    <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
+      <Text style={styles.bold}>Symptoms</Text>
+      <Text style={styles.italics}>
+        Searchable Symptoms will be present here
+      </Text>
+    </View>
+);
+}
+
+const Item = ({ title }) => (
+  <View style={styles.item}>
+    <Text style={styles.title}>{title}</Text>
+  </View>
+);
+
+function MainPage({navigation}) { //This is the screen where we arrive when using the main navigation tab. Clicking each list item will bring you to its subsequent page
+      return (
+        <SafeAreaView style={styles.container}>
+          <FlatList
+            style={{marginTop:40}}
+            data={DATA}
+            keyExtractor = {item => item.id}
+            renderItem={({item}) => (
+              <View style = {{justifyContent: 'center', MarginBottom:10}}>
+                <TouchableWithoutFeedback onPress={() => navigation.navigate(item.id)}>
+                  <Text style = 
+                    {{backgroundColor:'blue', color:'white', padding:10, width:250}}>
+                    {item.title}
+                  </Text>
+                </TouchableWithoutFeedback>
+              </View>
+            )}
+            
+          />
+        </SafeAreaView>
+    );
+}
 
 
-
-
-export default class CalendarScreen extends React.Component {
+export default class InformationScreen extends React.Component { //All screens are defined in this section
   async componentDidMount() {
      await Font.loadAsync({
     'Inter-Black': require('../assets/fonts/Inter-Black.otf'),
@@ -21,17 +95,18 @@ export default class CalendarScreen extends React.Component {
       'https://rsms.me/inter/font-files/Inter-SemiBoldItalic.otf?v=3.12',
   });
   }
+
   render()
   { 
       return (
-          <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-        <Text>Calendar</Text>
-            <Text>This will be the information tab</Text>
-            <Text style={styles.bold}>Acts as an FAQ</Text>
-            <Text style={styles.italics}>
-              Questions expecting mothers may have will go here
-            </Text>
-          </View>
+        <NavigationContainer independent={true}>
+          <Stack.Navigator>
+            <Stack.Screen name="Main" component={MainPage} options={{ headerShown: false}} />
+            <Stack.Screen name="FAQ" component={FAQ} />
+            <Stack.Screen name="Weekly Information" component={Weekly} />
+            <Stack.Screen name="Symptoms" component={Symptoms} />
+        </Stack.Navigator>
+        </NavigationContainer>
     );
   }
 }

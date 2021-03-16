@@ -9,6 +9,7 @@ import { NavigationContainer } from '@react-navigation/native';
 
 //import LoginScreen from './pages/LoginScreen';
 import TabContainer from './pages/TabContainer';
+import InformationScreen from './pages/InformationScreen';
 
 import * as React from 'react';
 //import React, { useReducer, useMemo, useEffect, createContext } from 'react';
