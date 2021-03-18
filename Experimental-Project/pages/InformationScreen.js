@@ -5,6 +5,7 @@ import * as React from 'react';
 import { Text, Button, View, Image, StyleSheet, FlatList, SafeAreaView, TouchableWithoutFeedback } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
+import WeeklyInfoScreen from './WeeklyInfoScreen';
 
 const Stack = createStackNavigator();
 
@@ -30,17 +31,6 @@ function FAQ(){
       <Text style={styles.bold}>FAQ</Text>
       <Text style={styles.italics}>
         Frequently Asked Questions will be present here
-      </Text>
-    </View>
-);
-}
-
-function Weekly(){ //This is the function where the weekly page begins
-  return (
-    <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-      <Text style={styles.bold}>Weekly Information</Text>
-      <Text style={styles.italics}>
-        Weekly information will be present here
       </Text>
     </View>
 );
@@ -103,7 +93,7 @@ export default class InformationScreen extends React.Component { //All screens a
           <Stack.Navigator>
             <Stack.Screen name="Main" component={MainPage} options={{ headerShown: false}} />
             <Stack.Screen name="FAQ" component={FAQ} />
-            <Stack.Screen name="Weekly Information" component={Weekly} />
+            <Stack.Screen name="Weekly Information" component={WeeklyInfoScreen} />
             <Stack.Screen name="Symptoms" component={Symptoms} />
         </Stack.Navigator>
         </NavigationContainer>
