@@ -25,7 +25,7 @@ const DATA = [ //This is where the week's facts will be listed
   },
 ];
 
-Item = ({ title }) => (
+const Item = ({ title }) => (
   <View style={styles.item}>
     <Text style={styles.title}>{title}</Text>
   </View>

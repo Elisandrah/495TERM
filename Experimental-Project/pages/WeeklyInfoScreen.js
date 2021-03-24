@@ -5,7 +5,7 @@ import * as React from 'react';
 import { Text, Button, View, Image, StyleSheet, FlatList, SafeAreaView, TouchableWithoutFeedback } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-//import Week1 from './weekly_info_pages/Week1';
+import Week1 from './weekly_info_pages/Week1';
 import Week2 from './weekly_info_pages/Week2';
 
 

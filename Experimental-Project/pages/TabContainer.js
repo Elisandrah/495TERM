@@ -2,13 +2,15 @@ import { NavigationContainer } from '@react-navigation/native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import * as React from 'react';
 import { Button } from 'react-native';
+import { Ionicons  } from '@expo/vector-icons';
 //import React, { Component } from 'react';
+
+
 import HomeScreen from './HomeScreen';
 import CalendarScreen from './CalendarScreen';
 import PlanScreen from './PlanScreen';
 import ContactScreen from './ContactScreen';
 import InformationScreen from './InformationScreen';
-import Sidebar from 'react-sidebar';
 
 const Tab = createBottomTabNavigator();
 
@@ -31,7 +33,41 @@ export default class Nav extends React.Component { //This holds the tabs that we
 	render()
 	{
 		return (
-			<Tab.Navigator>
+			<Tab.Navigator
+                screenOptions={({ route }) => ({
+                    tabBarIcon: ({ focused, color, size }) => {
+                        let iconName;
+
+                        if (route.name === 'Main Menu') {
+                            iconName = focused
+                                ? 'home'
+                                : 'home-outline';
+                        } else if (route.name === 'Calendar') {
+                            iconName = focused
+                                ? 'calendar'
+                                : 'calendar-outline';
+                        } else if (route.name === 'Plan') {
+                            iconName = focused
+                                ? 'document'
+                                : 'document-outline';
+                        } else if (route.name === 'Contact') {
+                            iconName = focused
+                                ? 'chatbubble'
+                                : 'chatbubble-outline';
+                        } else if (route.name === 'Info') {
+                            iconName = focused
+                                ? 'information-circle'
+                                : 'information-circle-outline';
+                        }
+
+                        return <Ionicons name={iconName} size={size} color={color} />;
+                    },
+                })}
+                tabBarOptions={{
+                    activeTintColor: '#9E1B32',
+                    inactiveTintColor: 'gray',
+                }}
+            >
     			<Tab.Screen name="Main Menu" component={HomeScreen} />
     			<Tab.Screen name="Calendar" component={CalendarScreen} />
     			<Tab.Screen name="Plan" component={PlanScreen} />
