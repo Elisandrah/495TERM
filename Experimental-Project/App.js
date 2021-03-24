@@ -36,9 +36,11 @@ function SplashScreen() {
 
 function LoginScreen()
 {
-  const { signIn } = React.useContext(AuthContext);
   const [username, setUsername] = React.useState('');
   const [password, setPassword] = React.useState('');
+
+  const { signIn } = React.useContext(AuthContext);
+
   return( //Renders the image and places the login stuff
     <View style={StyleSheet.InputView}>
       <Image
@@ -50,12 +52,14 @@ function LoginScreen()
         style={StyleSheet.InputView}
         placeholder="Username"
         placeholderTextColor = "#9E1B32"
+        onChangeText={setUsername}
       />
       <TextInput
         style={StyleSheet.InputView}
         placeholder="Password"
         value={password}
         placeHolderTextColor = "#828A8F"
+        onChangeText={setPassword}
         secureTextEntry={true}
       />
       <Button
