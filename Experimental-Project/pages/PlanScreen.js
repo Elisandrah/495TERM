@@ -1,7 +1,7 @@
 import AppLoading from 'expo-app-loading';
 import * as Font from 'expo-font';
 import * as React from 'react';
-//import React, { useState, Component } from 'react';
+import { useState } from 'react';
 import { Text, Button, View, Image, StyleSheet, Alert } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
@@ -10,14 +10,13 @@ import Modal from 'react-native-modal';
 
 import { FlatList, State, TextInput } from 'react-native-gesture-handler';
 import { onChange } from 'react-native-reanimated';
+import { SafeAreaInsetsContext } from 'react-native-safe-area-context';
 
 const Stack = createStackNavigator();
 
-
-
 function MHPForm({navigation}){
-  const [state, onChangeText] = React.useState({ //This object holds the inputed data
-    id: "",
+  /*const [state, onChangeText] = React.useState({ //This object holds the inputed data
+    id: "it didnt change",
     provider: "",
     age: "",
     weight: "",
@@ -27,98 +26,121 @@ function MHPForm({navigation}){
     meds: "",
     urineText: "",
     fetalTones: ""
-  })
+  })*/
+  const [id, setID] = useState('test');
+  const [provider, setProvider] = useState('');
+  const [age, setAge] = useState('');
+  const [weight, setWeight] = useState('');
+  const [weightGain, setWeightGain] = useState('');
+  const [bp, setBP] = useState('');
+  const [fundal, setFundal] = useState('');
+  const [meds, setMeds] = useState('');
+  const [urine, setUrine] = useState('');
+  const [fetal, setFetal] = useState('');
 
   return (
     <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
       <TextInput
         style={styles.input}
-        onChangeText={onChangeText}
-        value={state.id}
+        onChangeText={id => setID(id)}
+        value={id}
         label="ID"
         placeholder="Enter the id"
       />
       <TextInput
         style={styles.input}
-        onChangeText={onChangeText}
-        value={state.provider}
+        onChangeText={provider => setProvider(provider)}
+        value={provider}
         label="Provider"
         placeholder="Enter the provider"
       />
       <TextInput
         style={styles.input}
-        onChangeText={onChangeText}
-        value={state.age}
+        onChangeText={age => setAge(age)}
+        value={age}
         placeholder="Enter the age"
       />
       <TextInput
         style={styles.input}
-        onChangeText={onChangeText}
-        value={state.weight}
+        onChangeText={weight => setWeight(weight)}
+        value={weight}
         placeholder="Enter the weight"
       />
       <TextInput
         style={styles.input}
-        onChangeText={onChangeText}
-        value={state.weightGain}
+        onChangeText={weightGain => setWeightGain(weightGain)}
+        value={weightGain}
         placeholder="Enter the weight gained"
       />
       <TextInput
         style={styles.input}
-        allowFontScaling={true}
-        onChangeText={onChangeText}
-        value={state.bloodPressure}
+        onChangeText={bp => setBP(bp)}
+        value={bp}
         placeholder="Enter current blood pressure"
       />
       <TextInput
         style={styles.input}
-        onChangeText={onChangeText}
-        value={state.fundalHeight}
+        onChangeText={fundal => setFundal(fundal)}
+        value={fundal}
         placeholder="Enter the fundal height"
       />
       <TextInput
         style={styles.input}
-        onChangeText={onChangeText}
-        value={state.meds}
+        onChangeText={meds => setMeds(meds)}
+        value={meds}
         multiline={true}
         placeholder="Enter current medication"
       />
       <TextInput
         style={styles.input}
-        onChangeText={onChangeText}
-        value={state.urineText}
+        onChangeText={urine => setUrine(urine)}
+        value={urine}
         placeholder="Enter results of urine test"
       />
       <TextInput
         style={styles.input}
-        onChangeText={onChangeText}
-        value={state.fetalTones}
+        onChangeText={fetal => setFetal(fetal)}
+        value={fetal}
         placeholder="Enter the fetal tones"
       />
 
       <Button
         onPress={() =>
-          navigation.navigate("MHP Data")
-          
-        }
+          {navigation.navigate("MHP Data", {
+            id: id,
+            provider: provider,
+            age: age,
+            weight: weight,
+            weightGain: weightGain,
+            bp: bp,
+            fundal: fundal,
+            meds: meds,
+            urine: urine,
+            fetal: fetal,
+          })
+        }}
         title="View entered data"
       />
     </View>
 );
 }
 
-function DisplayMHP({navigation}, state){
+function DisplayMHP({route, navigation}){
+  const {id, provider, age, weight, weightGain, bp, fundal, meds, urine, fetal} = route.params;
+
   return(
-    <View style={styles.container}>
-      <Text> This can be one of our test cases, have the data inputed on previous screen saved</Text>
-      <FlatList
-        style={{marginTop:40}}
-        //data={state}
+    <View style={styles.bold}>
+      <Text>ID entered is {id}</Text>
+      <Text>Provider entered is {provider}</Text>
+      <Text>Age entered is {age}</Text>
+      <Text>Weight entered is {weight}</Text>
+      <Text>Weight Gained is {weightGain}</Text>
+      <Text>Blood Pressure entered is {bp}</Text>
+      <Text>Fundal Height is {fundal}</Text>
+      <Text>Medication entered is {meds}</Text>
+      <Text>Urine Results are {urine}</Text>
+      <Text>Fetal Tones entered are {fetal}</Text>
 
-
-
-
-      />
     </View>
   );
 }
@@ -178,7 +200,9 @@ const styles = StyleSheet.create
 
   bold: {
     fontFamily: 'Inter-Black',
-    fontSize: 20
+    fontSize: 50,
+    alignItems: 'center',
+    justifyContent: 'center'
   },
 
   italics: {
