@@ -27,7 +27,7 @@ function MHPForm({navigation}){
     urineText: "",
     fetalTones: ""
   })*/
-  const [id, setID] = useState('test');
+  const [id, setID] = useState('');
   const [provider, setProvider] = useState('');
   const [age, setAge] = useState('');
   const [weight, setWeight] = useState('');
