@@ -32,13 +32,12 @@ const Item = ({ title }) => (
 );
 
 export default class CalendarScreen extends React.Component {
-/*   async componentDidMount() {
-     await Font.loadAsync({
+  async componentDidMount() {
+    await Font.loadAsync({
     'Inter-Black': require('/Experimental-Project/assets/fonts/Inter-Black.otf'),
-    'Inter-SemiBoldItalic':
-      'https://rsms.me/inter/font-files/Inter-SemiBoldItalic.otf?v=3.12',
+    'Inter-SemiBoldItalic': require('../assests/fonts/Inter-SemiBoldItalic.otf'),
   });
-  } */ //Commented out for now due to errors, to fix later
+  }
   render()
   { 
       return (
