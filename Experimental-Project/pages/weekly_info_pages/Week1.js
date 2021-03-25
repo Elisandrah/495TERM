@@ -35,7 +35,7 @@ export default class CalendarScreen extends React.Component {
   async componentDidMount() {
     await Font.loadAsync({
     'Inter-Black': require('/Experimental-Project/assets/fonts/Inter-Black.otf'),
-    'Inter-SemiBoldItalic': require('../assests/fonts/Inter-SemiBoldItalic.otf'),
+    'Inter-SemiBoldItalic': require('../assets/fonts/Inter-SemiBoldItalic.otf'),
   });
   }
   render()

@@ -81,7 +81,7 @@ export default class InformationScreen extends React.Component { //All screens a
   async componentDidMount() {
      await Font.loadAsync({
     'Inter-Black': require('../assets/fonts/Inter-Black.otf'),
-    'Inter-SemiBoldItalic': require('../assests/fonts/Inter-SemiBoldItalic.otf'),
+    'Inter-SemiBoldItalic': require('../assets/fonts/Inter-SemiBoldItalic.otf'),
   });
   }
 
