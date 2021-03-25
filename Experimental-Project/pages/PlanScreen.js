@@ -12,21 +12,20 @@ import { FlatList, State, TextInput } from 'react-native-gesture-handler';
 import { onChange } from 'react-native-reanimated';
 import { SafeAreaInsetsContext } from 'react-native-safe-area-context';
 
-const Stack = createStackNavigator();
+/**
+ * @classdesc This .js file will handle the MHP entry and the data contained. Patients/nurses will enter the information required of the
+ * MHP and then the information will be displayed to them.
+ * @todo Create a document that can be saved and referred back to in the future based on what was filled out
+ */
 
+const Stack = createStackNavigator(); //Child navigator to be used within this screen
+
+/**
+ * @function MHPForm Queries the patient for the information needed to fill out the MHP
+ * @param {object} navigation The navigation context which will allow us to switch pages 
+ * @returns Renders the textInput boxes which will then save the data entered for display on the "Display MHP" page
+ */
 function MHPForm({navigation}){
-  /*const [state, onChangeText] = React.useState({ //This object holds the inputed data
-    id: "it didnt change",
-    provider: "",
-    age: "",
-    weight: "",
-    weightGain: "",
-    bloodPressure: "",
-    fundalHeight: "",
-    meds: "",
-    urineText: "",
-    fetalTones: ""
-  })*/
   const [id, setID] = useState('');
   const [provider, setProvider] = useState('');
   const [age, setAge] = useState('');
@@ -125,6 +124,13 @@ function MHPForm({navigation}){
 );
 }
 
+/**
+ * @function DisplayMHP Receives and then displays the information that was queried by @function MHPForm
+ * @param {object} navigation navigation container to transition through pages
+ * @param {object} route data carried over to next function, required in order to display information
+ * @returns Renders the information that was receieved from a previous function and display it on screen
+ */
+
 function DisplayMHP({route, navigation}){
   const {id, provider, age, weight, weightGain, bp, fundal, meds, urine, fetal} = route.params;
 
@@ -145,6 +151,11 @@ function DisplayMHP({route, navigation}){
   );
 }
 
+/**
+ * 
+ * @param {object} navigation navigation container to transition through pages
+ * @returns Renders the main page for the MHP. This is the initial landing page that can be navigated to once a user has logged in
+ */
 function MainPage({navigation}){
   return (
     <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
@@ -166,13 +177,15 @@ function MainPage({navigation}){
 }
 
 
-
+/**
+ * contains the child navigation container that will be used for this class to navigate between the pages
+ * @class 
+ */
 export default class CalendarScreen extends React.Component {
   async componentDidMount() {
      await Font.loadAsync({
     'Inter-Black': require('../assets/fonts/Inter-Black.otf'),
-    'Inter-SemiBoldItalic':
-      'https://rsms.me/inter/font-files/Inter-SemiBoldItalic.otf?v=3.12',
+    'Inter-SemiBoldItalic': require('../assets/fonts/Inter-SemiBoldItalic.otf'),
   });
   }
   render()
@@ -189,6 +202,10 @@ export default class CalendarScreen extends React.Component {
   }
 }
 
+/**
+ * @constant styles sheets used within this document. Style sheets allow for cleaner code when designing UI
+ * @default
+ */
 const styles = StyleSheet.create
 ({
   container: {

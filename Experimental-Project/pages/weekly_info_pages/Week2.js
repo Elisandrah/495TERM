@@ -22,13 +22,12 @@ import { TextInput } from 'react-native-gesture-handler';
  * @returns The display parameters for said placeholder screen
  */
 export default class CalendarScreen extends React.Component {
-/*   async componentDidMount() {
-     await Font.loadAsync({
-    'Inter-Black': require('../assets/fonts/Inter-Black.otf'),
-    'Inter-SemiBoldItalic':
-      'https://rsms.me/inter/font-files/Inter-SemiBoldItalic.otf?v=3.12',
+  async componentDidMount() {
+    await Font.loadAsync({
+      'Inter-Black': require('../../assets/fonts/Inter-Black.otf'),
+      'Inter-SemiBoldItalic': require('../../assets/fonts/Inter-SemiBoldItalic.otf'),
   });
-  } */ //Commented out for now due to errors, to fix later
+  }
   render()
   { 
       return (
