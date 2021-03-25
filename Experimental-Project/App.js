@@ -90,7 +90,7 @@ function LoginScreen()
 /**
  * Main app file that acts as the starting point for execution
  * @param {Object} navigation The navigation context passed into the app when it is called
- * @returns 
+ * @returns App container for intial development
  * @todo Learn how to pass username and password information securely into the authenication context dispatcher
  */
 export default function App({ navigation })

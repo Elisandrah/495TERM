@@ -71,7 +71,7 @@ const Item = ({ title }) => (
 /**
  * 
  * @param {object} navigation The navigation container that is used to move within the pages contained here 
- * @returns 
+ * @returns Returns the navigation main page for the information to be displayed
  */
 function MainPage({navigation}) { //This is the screen where we arrive when using the main navigation tab. Clicking each list item will bring you to its subsequent page
       return (

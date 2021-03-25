@@ -21,7 +21,7 @@ import { SafeAreaInsetsContext } from 'react-native-safe-area-context';
 const Stack = createStackNavigator(); //Child navigator to be used within this screen
 
 /**
- * @function MHPForm Queries the patient for the information needed to fill out the MHP
+ * Queries the patient for the information needed to fill out the MHP
  * @param {object} navigation The navigation context which will allow us to switch pages 
  * @returns Renders the textInput boxes which will then save the data entered for display on the "Display MHP" page
  */
@@ -125,7 +125,7 @@ function MHPForm({navigation}){
 }
 
 /**
- * @function DisplayMHP Receives and then displays the information that was queried by @function MHPForm
+ * Receives and then displays the information that was queried by MHPForm
  * @param {object} navigation navigation container to transition through pages
  * @param {object} route data carried over to next function, required in order to display information
  * @returns Renders the information that was receieved from a previous function and display it on screen
