@@ -1,7 +1,7 @@
-## CS495 Capstone Project - TERM
+# CS495 Capstone Project - TERM
 
 ## UNIT TESTS
-# Unit Test 1
+### Unit Test 1
 1: Log in to App
 2: Select "Plan" Tab using bottom navigator
 3: Press "Fill out maternal health plan" Button
