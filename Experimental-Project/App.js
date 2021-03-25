@@ -7,17 +7,24 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import { Button, Text, TextInput, View, Image } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 
-//import LoginScreen from './pages/LoginScreen';
 import TabContainer from './pages/TabContainer';
 import InformationScreen from './pages/InformationScreen';
 
 import * as React from 'react';
-//import React, { useReducer, useMemo, useEffect, createContext } from 'react';
-//import * as React from "react";
 
 const AuthContext = React.createContext();
 const Stack = createStackNavigator();
 
+/**
+ * @classdesc Main .js file from which the entire app is deployed. Contains both the main App function as well as the LoginScreen function
+ * @todo Finish developing authentication flow, as well as implement either local verification/storage or remote verification/storage for user data/tokens
+ */
+
+/**
+ * @constant styles Contains css/style information for App.js
+ * @type {StyleSheet}
+ * @default
+ */
 const styles = StyleSheet.create({ //I believe we will be able to create default styles that should make the code more readable later
 InputView: {
   flex: 1, 
@@ -26,6 +33,10 @@ InputView: {
 }
 });
 
+/**
+ * Placeholder function for when the app won't load into the login screen on startup
+ * @returns Renders loading text for splash screen
+ */
 function SplashScreen() {
   return (
     <View>
@@ -34,6 +45,10 @@ function SplashScreen() {
   );
 }
 
+/**
+ * Initial state function when logging in, uses the given authentication context in order to send  information through an authentication flow
+ * @returns Renders login screen with TERM image and username/password fields
+ */
 function LoginScreen()
 {
   const [username, setUsername] = React.useState('');
@@ -72,6 +87,12 @@ function LoginScreen()
     
 }
 
+/**
+ * Main app file that acts as the starting point for execution
+ * @param {Object} navigation The navigation context passed into the app when it is called
+ * @returns 
+ * @todo Learn how to pass username and password information securely into the authenication context dispatcher
+ */
 export default function App({ navigation })
 {
   const [state, dispatch] = React.useReducer(

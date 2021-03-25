@@ -12,7 +12,15 @@ import { TextInput } from 'react-native-gesture-handler';
 
 
 
+/**
+ * @classdesc .js file that holds the week 2 information and requisite code
+ * @todo Add various tips, information, and FAQs that mothers might want to know on week 2 of their pregnancy
+ */
 
+/**
+ * Acts as a basic placeholder for a future week 2 information screen to be developed
+ * @returns The display parameters for said placeholder screen
+ */
 export default class CalendarScreen extends React.Component {
 /*   async componentDidMount() {
      await Font.loadAsync({
@@ -36,6 +44,11 @@ export default class CalendarScreen extends React.Component {
   }
 }
 
+/**
+ * @constant styles Contains css/style information for HomeScreen.js also contains font information
+ * @type {StyleSheet}
+ * @default
+ */
 const styles = StyleSheet.create
 ({
   container: {

@@ -10,9 +10,15 @@ import Modal from 'react-native-modal';
 
 import { TextInput } from 'react-native-gesture-handler';
 
+/**
+ * @classdesc .js file that holds the home screen information and requisite code
+ * @todo Add basic information and reminders for users to use upon login
+ */
 
-
-
+/**
+ * Acts as a basic placeholder for a future home screen to be developed
+ * @returns The display parameters for said placeholder screen
+ */
 export default class CalendarScreen extends React.Component {
   async componentDidMount() {
      await Font.loadAsync({
@@ -36,6 +42,11 @@ export default class CalendarScreen extends React.Component {
   }
 }
 
+/**
+ * @constant styles Contains css/style information for HomeScreen.js also contains font information
+ * @type {StyleSheet}
+ * @default
+ */
 const styles = StyleSheet.create
 ({
   container: {
