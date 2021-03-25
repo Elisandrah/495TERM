@@ -10,9 +10,14 @@ import Modal from 'react-native-modal';
 
 import { TextInput } from 'react-native-gesture-handler';
 
+/**
+ * @classdesc This will be the primary page for contacting the nurse or have information related to it
+ */
 
-
-
+/**
+ * Displays the contact info within this page 
+ * @class
+ */
 export default class CalendarScreen extends React.Component {
   async componentDidMount() {
      await Font.loadAsync({
@@ -35,6 +40,10 @@ export default class CalendarScreen extends React.Component {
   }
 }
 
+/**
+ * @constant styles sheets used within this document. Style sheets allow for cleaner code when designing UI
+ * @default
+ */
 const styles = StyleSheet.create
 ({
   container: {

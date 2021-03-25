@@ -8,6 +8,9 @@ import { createStackNavigator } from '@react-navigation/stack';
 import Week1 from './weekly_info_pages/Week1';
 import Week2 from './weekly_info_pages/Week2';
 
+/**
+ * @classdesc This is the driver class that will redirect patients to the specific week of information that they seek
+ */
 
 const WeeklyStack = createStackNavigator();
 
@@ -23,7 +26,13 @@ const DATA = [ //List of IDs for buttons
 
 ];
 
-function MainPage({navigation}) { //This is the screen where we arrive when using the main navigation tab. Clicking each list item will bring you to its subsequent page
+/**
+ * @function MainPage is the screen where we arrive when using the main navigation tab. Clicking each list item will bring you to its subsequent page
+ * @param {object} navigation This is the navigation container that is passed to allow the screen to move to another screen 
+ * @returns Renders the flatlist which contains the list of weeks that are currently present for information
+ */
+
+function MainPage({navigation}) { 
   return (
     <SafeAreaView style={styles.container}>
       <FlatList
@@ -46,6 +55,10 @@ function MainPage({navigation}) { //This is the screen where we arrive when usin
 );
 }
 
+/**
+ * @class This is the main driver that contains the child navigation container relevant to the weekly information
+ */
+
 export default class WeeklyInfoScreen extends React.Component {
   async componentDidMount() {
      await Font.loadAsync({
@@ -67,6 +80,10 @@ export default class WeeklyInfoScreen extends React.Component {
   }
 }
 
+/**
+ * @constant styles sheets used within this document. Style sheets allow for cleaner code when designing UI
+ * @default
+ */
 const styles = StyleSheet.create
 ({
   container: {

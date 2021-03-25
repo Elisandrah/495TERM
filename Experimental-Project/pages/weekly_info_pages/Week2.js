@@ -16,8 +16,8 @@ import { TextInput } from 'react-native-gesture-handler';
 export default class CalendarScreen extends React.Component {
   async componentDidMount() {
     await Font.loadAsync({
-      'Inter-Black': require('../assets/fonts/Inter-Black.otf'),
-      'Inter-SemiBoldItalic': require('../assets/fonts/Inter-SemiBoldItalic.otf'),
+      'Inter-Black': require('../../assets/fonts/Inter-Black.otf'),
+      'Inter-SemiBoldItalic': require('../../assets/fonts/Inter-SemiBoldItalic.otf'),
   });
   }
   render()

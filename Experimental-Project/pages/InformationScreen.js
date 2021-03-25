@@ -7,6 +7,11 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import WeeklyInfoScreen from './WeeklyInfoScreen';
 
+/**
+ * @classdesc This will be the main page for the information screen. This page will bring allow you to drill down further to the required information sections relevant to the patient
+ * @todo Fill the pages with the patient education documents
+ */
+
 const Stack = createStackNavigator();
 
 const DATA = [ //This generates the list, more can be added. Remember to add a navigation feature for it if adding more
@@ -25,6 +30,10 @@ const DATA = [ //This generates the list, more can be added. Remember to add a n
 
 ];
 
+/**
+ * 
+ * @returns Renders the FAQ that mothers have during their pregnancies
+ */
 function FAQ(){
   return (
     <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
@@ -36,6 +45,11 @@ function FAQ(){
 );
 }
 
+/**
+ * 
+ * @returns Renders the page of symptons
+ * @todo Make this page have a search bar so that patients can enter a symptom they are experiencing and have information shown to them
+ */
 function Symptoms(){
   return (
     <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
@@ -53,6 +67,12 @@ const Item = ({ title }) => (
   </View>
 );
 
+
+/**
+ * 
+ * @param {object} navigation The navigation container that is used to move within the pages contained here 
+ * @returns 
+ */
 function MainPage({navigation}) { //This is the screen where we arrive when using the main navigation tab. Clicking each list item will bring you to its subsequent page
       return (
         <SafeAreaView style={styles.container}>
@@ -76,7 +96,10 @@ function MainPage({navigation}) { //This is the screen where we arrive when usin
     );
 }
 
-
+/**
+ * This contains the child navigation container that will be used for navigating within this class
+ * @class 
+ */
 export default class InformationScreen extends React.Component { //All screens are defined in this section
   async componentDidMount() {
      await Font.loadAsync({
@@ -100,6 +123,10 @@ export default class InformationScreen extends React.Component { //All screens a
   }
 }
 
+/**
+ * @constant styles sheets used within this document. Style sheets allow for cleaner code when designing UI
+ * @default
+ */
 const styles = StyleSheet.create
 ({
   container: {

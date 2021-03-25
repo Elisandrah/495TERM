@@ -10,6 +10,10 @@ import Modal from 'react-native-modal';
 
 import { TextInput } from 'react-native-gesture-handler';
 
+/**
+ * @classdesc This is the information page that will contain everything relevant to week1
+ */
+
 const DATA = [ //This is where the week's facts will be listed
   {
     title: "Important Milestones",
@@ -31,11 +35,15 @@ const Item = ({ title }) => (
   </View>
 );
 
+/**
+ * Renders the flatlist from the DATA array 
+ * @class
+ */
 export default class CalendarScreen extends React.Component {
   async componentDidMount() {
     await Font.loadAsync({
-    'Inter-Black': require('/Experimental-Project/assets/fonts/Inter-Black.otf'),
-    'Inter-SemiBoldItalic': require('../assets/fonts/Inter-SemiBoldItalic.otf'),
+    'Inter-Black': require('../../assets/fonts/Inter-Black.otf'),
+    'Inter-SemiBoldItalic': require('../../assets/fonts/Inter-SemiBoldItalic.otf'),
   });
   }
   render()
@@ -55,6 +63,10 @@ export default class CalendarScreen extends React.Component {
   }
 }
 
+/**
+ * @constant styles sheets used within this document. Style sheets allow for cleaner code when designing UI
+ * @default
+ */
 const styles = StyleSheet.create({
   container: {
     flex: 1,
