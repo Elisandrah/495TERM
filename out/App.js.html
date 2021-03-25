@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: App.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: App.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import { createStackNavigator } from '@react-navigation/stack';
+import { createAppContainer } from '@react-navigation/native';
+
+import { StyleSheet } from 'react-native';
+import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import { Button, Text, TextInput, View, Image } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+
+import TabContainer from './pages/TabContainer';
+import InformationScreen from './pages/InformationScreen';
+
+import * as React from 'react';
+
+const AuthContext = React.createContext();
+const Stack = createStackNavigator();
+
+/**
+ * @classdesc Main .js file from which the entire app is deployed. Contains both the main App function as well as the LoginScreen function
+ * @todo Finish developing authentication flow, as well as implement either local verification/storage or remote verification/storage for user data/tokens
+ */
+
+/**
+ * @constant styles Contains css/style information for App.js
+ * @type {StyleSheet}
+ * @default
+ */
+const styles = StyleSheet.create({ //I believe we will be able to create default styles that should make the code more readable later
+InputView: {
+  flex: 1, 
+  justifyContent: "center", 
+  alignItems: "center"
+}
+});
+
+/**
+ * Placeholder function for when the app won't load into the login screen on startup
+ * @returns Renders loading text for splash screen
+ */
+function SplashScreen() {
+  return (
+    &lt;View>
+      &lt;Text>Loading...&lt;/Text>
+    &lt;/View>
+  );
+}
+
+/**
+ * Initial state function when logging in, uses the given authentication context in order to send  information through an authentication flow
+ * @returns Renders login screen with TERM image and username/password fields
+ */
+function LoginScreen()
+{
+  const [username, setUsername] = React.useState('');
+  const [password, setPassword] = React.useState('');
+
+  const { signIn } = React.useContext(AuthContext);
+
+  return( //Renders the image and places the login stuff
+    &lt;View style={StyleSheet.InputView}>
+      &lt;Image
+        style={{width: 300, height: 250, resizeMode: 'contain'}}
+        source={require('./assets/splash_img.png')} 
+      />
+      &lt;TextInput
+        value={username}
+        style={StyleSheet.InputView}
+        placeholder="Username"
+        placeholderTextColor = "#9E1B32"
+        onChangeText={setUsername}
+      />
+      &lt;TextInput
+        style={StyleSheet.InputView}
+        placeholder="Password"
+        value={password}
+        placeHolderTextColor = "#828A8F"
+        onChangeText={setPassword}
+        secureTextEntry={true}
+      />
+      &lt;Button
+        title="Log in"
+        color = "#9E1B32"
+        onPress={() => signIn({ username, password })}
+      />
+    &lt;/View>
+    );
+    
+}
+
+/**
+ * Main app file that acts as the starting point for execution
+ * @param {Object} navigation The navigation context passed into the app when it is called
+ * @returns App container for intial development
+ * @todo Learn how to pass username and password information securely into the authenication context dispatcher
+ */
+export default function App({ navigation })
+{
+  const [state, dispatch] = React.useReducer(
+    (prevState, action) => {
+      switch (action.type) {
+        case 'RESTORE_TOKEN':
+          return {
+            ...prevState,
+            userToken: action.token,
+            isLoading: false,
+          };
+        case 'SIGN_IN':
+          return {
+            ...prevState,
+            isSignout: false,
+            userToken: action.token,
+          };
+        case 'SIGN_OUT':
+          return {
+            ...prevState,
+            isSignout: true,
+            userToken: null,
+          };
+      }
+    },
+    {
+      isLoading: true,
+      isSignout: false,
+      userToken: null,
+    }
+  );
+
+  React.useEffect(() => {
+      const bootstrapAsync = async () => {
+        let userToken;
+
+        try {
+          userToken = await AsyncStorage.getItem('userToken');
+        } catch (e) {
+          //Restoring Token Failed
+        }
+
+        dispatch({ type: 'RESTORE_TOKEN', token: userToken});
+      };
+
+      bootstrapAsync();
+    }, []);
+  
+  const authContext = React.useMemo(
+    () => ({
+      signIn: async data => {
+        //THIS IS WHERE SERVER ACCESS AND AUTHENTICATION WOULD OCCUR, WE DO NOT HAVE THIS YET
+
+        dispatch({ type: 'SIGN_IN', token: 'dummy_auth_token' });
+      },
+      signOut: () => dispatch({ type: 'SIGN_OUT'}),
+      signUp: async data => {
+        //THIS IS WHERE A USER WOULD BE DIRECTED TOWARDS A SERVER TO RECIEVE A TOKEN TO LOGIN WITH
+        dispatch({ type: 'SIGN_IN', token: 'dummy_auth_token' });
+      },
+    }),
+    []
+  );
+
+  return(
+    &lt;AuthContext.Provider value={authContext}>
+      &lt;NavigationContainer>
+        &lt;Stack.Navigator>
+          {state.isLoading ? (
+            &lt;Stack.Screen name="Splash" component={SplashScreen} />
+            ) : state.userToken == null ? (
+              &lt;Stack.Screen name='Login' component={LoginScreen} options={{ headerShown: false, animationTypeForReplace: state.isSignout ? 'pop' : 'push' }}/>
+            ) : (
+              &lt;Stack.Screen name="Main" component={TabContainer} options={{ headerShown: false }} />
+            )}
+        &lt;/Stack.Navigator>
+      &lt;/NavigationContainer>
+    &lt;/AuthContext.Provider>
+    );
+}
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="module.html#.exports">exports</a></li></ul><h3>Global</h3><ul><li><a href="global.html#DATA">DATA</a></li><li><a href="global.html#DisplayMHP">DisplayMHP</a></li><li><a href="global.html#FAQ">FAQ</a></li><li><a href="global.html#LoginScreen">LoginScreen</a></li><li><a href="global.html#MainPage">MainPage</a></li><li><a href="global.html#MHPForm">MHPForm</a></li><li><a href="global.html#SplashScreen">SplashScreen</a></li><li><a href="global.html#Stack">Stack</a></li><li><a href="global.html#styles">styles</a></li><li><a href="global.html#Symptoms">Symptoms</a></li><li><a href="global.html#WeeklyStack">WeeklyStack</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.6</a> on Thu Mar 25 2021 01:40:10 GMT-0500 (Central Daylight Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

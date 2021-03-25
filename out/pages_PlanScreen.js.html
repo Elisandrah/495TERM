@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: pages/PlanScreen.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: pages/PlanScreen.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import AppLoading from 'expo-app-loading';
+import * as Font from 'expo-font';
+import * as React from 'react';
+import { useState } from 'react';
+import { Text, Button, View, Image, StyleSheet, Alert } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+import {createBottomTabNavigator} from '@react-navigation/bottom-tabs'
+import Modal from 'react-native-modal';
+
+import { FlatList, State, TextInput } from 'react-native-gesture-handler';
+import { onChange } from 'react-native-reanimated';
+import { SafeAreaInsetsContext } from 'react-native-safe-area-context';
+
+/**
+ * @classdesc This .js file will handle the MHP entry and the data contained. Patients/nurses will enter the information required of the
+ * MHP and then the information will be displayed to them.
+ * @todo Create a document that can be saved and referred back to in the future based on what was filled out
+ */
+
+const Stack = createStackNavigator(); //Child navigator to be used within this screen
+
+/**
+ * Queries the patient for the information needed to fill out the MHP
+ * @param {object} navigation The navigation context which will allow us to switch pages 
+ * @returns Renders the textInput boxes which will then save the data entered for display on the "Display MHP" page
+ */
+function MHPForm({navigation}){
+  const [id, setID] = useState('');
+  const [provider, setProvider] = useState('');
+  const [age, setAge] = useState('');
+  const [weight, setWeight] = useState('');
+  const [weightGain, setWeightGain] = useState('');
+  const [bp, setBP] = useState('');
+  const [fundal, setFundal] = useState('');
+  const [meds, setMeds] = useState('');
+  const [urine, setUrine] = useState('');
+  const [fetal, setFetal] = useState('');
+
+  return (
+    &lt;View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
+      &lt;TextInput
+        style={styles.input}
+        onChangeText={id => setID(id)}
+        value={id}
+        label="ID"
+        placeholder="Enter the id"
+      />
+      &lt;TextInput
+        style={styles.input}
+        onChangeText={provider => setProvider(provider)}
+        value={provider}
+        label="Provider"
+        placeholder="Enter the provider"
+      />
+      &lt;TextInput
+        style={styles.input}
+        onChangeText={age => setAge(age)}
+        value={age}
+        placeholder="Enter the age"
+      />
+      &lt;TextInput
+        style={styles.input}
+        onChangeText={weight => setWeight(weight)}
+        value={weight}
+        placeholder="Enter the weight"
+      />
+      &lt;TextInput
+        style={styles.input}
+        onChangeText={weightGain => setWeightGain(weightGain)}
+        value={weightGain}
+        placeholder="Enter the weight gained"
+      />
+      &lt;TextInput
+        style={styles.input}
+        onChangeText={bp => setBP(bp)}
+        value={bp}
+        placeholder="Enter current blood pressure"
+      />
+      &lt;TextInput
+        style={styles.input}
+        onChangeText={fundal => setFundal(fundal)}
+        value={fundal}
+        placeholder="Enter the fundal height"
+      />
+      &lt;TextInput
+        style={styles.input}
+        onChangeText={meds => setMeds(meds)}
+        value={meds}
+        multiline={true}
+        placeholder="Enter current medication"
+      />
+      &lt;TextInput
+        style={styles.input}
+        onChangeText={urine => setUrine(urine)}
+        value={urine}
+        placeholder="Enter results of urine test"
+      />
+      &lt;TextInput
+        style={styles.input}
+        onChangeText={fetal => setFetal(fetal)}
+        value={fetal}
+        placeholder="Enter the fetal tones"
+      />
+
+      &lt;Button
+        onPress={() =>
+          {navigation.navigate("MHP Data", {
+            id: id,
+            provider: provider,
+            age: age,
+            weight: weight,
+            weightGain: weightGain,
+            bp: bp,
+            fundal: fundal,
+            meds: meds,
+            urine: urine,
+            fetal: fetal,
+          })
+        }}
+        title="View entered data"
+      />
+    &lt;/View>
+);
+}
+
+/**
+ * Receives and then displays the information that was queried by MHPForm
+ * @param {object} navigation navigation container to transition through pages
+ * @param {object} route data carried over to next function, required in order to display information
+ * @returns Renders the information that was receieved from a previous function and display it on screen
+ */
+
+function DisplayMHP({route, navigation}){
+  const {id, provider, age, weight, weightGain, bp, fundal, meds, urine, fetal} = route.params;
+
+  return(
+    &lt;View style={styles.bold}>
+      &lt;Text>ID entered is {id}&lt;/Text>
+      &lt;Text>Provider entered is {provider}&lt;/Text>
+      &lt;Text>Age entered is {age}&lt;/Text>
+      &lt;Text>Weight entered is {weight}&lt;/Text>
+      &lt;Text>Weight Gained is {weightGain}&lt;/Text>
+      &lt;Text>Blood Pressure entered is {bp}&lt;/Text>
+      &lt;Text>Fundal Height is {fundal}&lt;/Text>
+      &lt;Text>Medication entered is {meds}&lt;/Text>
+      &lt;Text>Urine Results are {urine}&lt;/Text>
+      &lt;Text>Fetal Tones entered are {fetal}&lt;/Text>
+
+    &lt;/View>
+  );
+}
+
+/**
+ * 
+ * @param {object} navigation navigation container to transition through pages
+ * @returns Renders the main page for the MHP. This is the initial landing page that can be navigated to once a user has logged in
+ */
+function MainPage({navigation}){
+  return (
+    &lt;View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
+  &lt;Text>Calendar&lt;/Text>
+      &lt;Text>This will be the plan tab&lt;/Text>
+      &lt;Text style={styles.bold}>Displays MHP&lt;/Text>
+      &lt;Text style={styles.italics}>
+        Lists the maternal health plan for the patient
+      &lt;/Text>
+      &lt;Button
+        onPress={() =>
+          navigation.navigate("Maternal Health Plan")
+        }
+        title="Fill out Maternal Health Plan"
+      />
+    &lt;/View>
+  );
+
+}
+
+
+/**
+ * contains the child navigation container that will be used for this class to navigate between the pages
+ * @class 
+ */
+export default class CalendarScreen extends React.Component {
+  async componentDidMount() {
+     await Font.loadAsync({
+    'Inter-Black': require('../assets/fonts/Inter-Black.otf'),
+    'Inter-SemiBoldItalic': require('../assets/fonts/Inter-SemiBoldItalic.otf'),
+  });
+  }
+  render()
+  { 
+    return (
+      &lt;NavigationContainer independent={true}>
+        &lt;Stack.Navigator>
+          &lt;Stack.Screen name="Main" component={MainPage} options={{ headerShown: false}} />
+          &lt;Stack.Screen name="Maternal Health Plan" component={MHPForm} />
+          &lt;Stack.Screen name="MHP Data" component={DisplayMHP} />
+      &lt;/Stack.Navigator>
+      &lt;/NavigationContainer>
+    );
+  }
+}
+
+/**
+ * @constant styles sheets used within this document. Style sheets allow for cleaner code when designing UI
+ * @default
+ */
+const styles = StyleSheet.create
+({
+  container: {
+    flex: 1,
+    backgroundColor: '#fff',
+    alignItems: 'center',
+    justifyContent: 'center'
+  },
+
+  bold: {
+    fontFamily: 'Inter-Black',
+    fontSize: 50,
+    alignItems: 'center',
+    justifyContent: 'center'
+  },
+
+  italics: {
+    fontFamily: 'Inter-SemiBoldItalic',
+    fontSize: 15
+  },
+
+  input: {
+    height: 40,
+    width: 200,
+    margin: 8,
+    borderWidth: 1,
+
+  }
+});</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="module.html#.exports">exports</a></li></ul><h3>Global</h3><ul><li><a href="global.html#DATA">DATA</a></li><li><a href="global.html#DisplayMHP">DisplayMHP</a></li><li><a href="global.html#FAQ">FAQ</a></li><li><a href="global.html#LoginScreen">LoginScreen</a></li><li><a href="global.html#MainPage">MainPage</a></li><li><a href="global.html#MHPForm">MHPForm</a></li><li><a href="global.html#SplashScreen">SplashScreen</a></li><li><a href="global.html#Stack">Stack</a></li><li><a href="global.html#styles">styles</a></li><li><a href="global.html#Symptoms">Symptoms</a></li><li><a href="global.html#WeeklyStack">WeeklyStack</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.6</a> on Thu Mar 25 2021 01:40:10 GMT-0500 (Central Daylight Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: pages/WeeklyInfoScreen.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: pages/WeeklyInfoScreen.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import AppLoading from 'expo-app-loading';
+import * as Font from 'expo-font';
+import * as React from 'react';
+//import React, { useState, Component } from 'react';
+import { Text, Button, View, Image, StyleSheet, FlatList, SafeAreaView, TouchableWithoutFeedback } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+import Week1 from './weekly_info_pages/Week1';
+import Week2 from './weekly_info_pages/Week2';
+
+/**
+ * @classdesc This is the driver class that will redirect patients to the specific week of information that they seek
+ */
+
+const WeeklyStack = createStackNavigator();
+
+const DATA = [ //List of IDs for buttons
+  {
+    id: 'Week 1',
+    title: 'Week 1',
+  },
+  {
+    id: 'Week 2',
+    title: 'Week 2',
+  },
+
+];
+
+/**
+ * @function MainPage is the screen where we arrive when using the main navigation tab. Clicking each list item will bring you to its subsequent page
+ * @param {object} navigation This is the navigation container that is passed to allow the screen to move to another screen 
+ * @returns Renders the flatlist which contains the list of weeks that are currently present for information
+ */
+
+function MainPage({navigation}) { 
+  return (
+    &lt;SafeAreaView style={styles.container}>
+      &lt;FlatList
+        style={{marginTop:40}}
+        data={DATA}
+        keyExtractor = {item => item.id}
+        renderItem={({item}) => (
+          &lt;View style = {{justifyContent: 'center', MarginBottom:10}}>
+            &lt;TouchableWithoutFeedback onPress={() => navigation.navigate(item.id)}>
+              &lt;Text style = 
+                {{backgroundColor:'blue', color:'white', padding:10, width:250}}>
+                {item.title}
+              &lt;/Text>
+            &lt;/TouchableWithoutFeedback>
+          &lt;/View>
+        )}
+        
+      />
+    &lt;/SafeAreaView>
+);
+}
+
+/**
+ * @class This is the main driver that contains the child navigation container relevant to the weekly information
+ */
+
+export default class WeeklyInfoScreen extends React.Component {
+  async componentDidMount() {
+     await Font.loadAsync({
+    'Inter-Black': require('../assets/fonts/Inter-Black.otf'),
+    'Inter-SemiBoldItalic': require('../assets/fonts/Inter-SemiBoldItalic.otf'),
+  });
+  }
+  render()
+  { 
+      return (
+        &lt;NavigationContainer independent={true}>
+                  &lt;WeeklyStack.Navigator>
+                    &lt;WeeklyStack.Screen name="Main" component={MainPage} options={{ headerShown: false}} />
+                    &lt;WeeklyStack.Screen name="Week 1" component={Week1} options={{ headerShown: false}} />
+                    &lt;WeeklyStack.Screen name="Week 2" component={Week2} options={{ headerShown: false}} />
+                &lt;/WeeklyStack.Navigator>
+        &lt;/NavigationContainer>
+    );
+  }
+}
+
+/**
+ * @constant styles sheets used within this document. Style sheets allow for cleaner code when designing UI
+ * @default
+ */
+const styles = StyleSheet.create
+({
+  container: {
+    flex: 1,
+    backgroundColor: '#fff',
+    alignItems: 'center',
+    justifyContent: 'center'
+  },
+
+  bold: {
+    fontFamily: 'Inter-Black',
+    fontSize: 20
+  },
+
+  italics: {
+    fontFamily: 'Inter-SemiBoldItalic',
+    fontSize: 15
+  }
+});</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="module.html#.exports">exports</a></li></ul><h3>Global</h3><ul><li><a href="global.html#DATA">DATA</a></li><li><a href="global.html#DisplayMHP">DisplayMHP</a></li><li><a href="global.html#FAQ">FAQ</a></li><li><a href="global.html#LoginScreen">LoginScreen</a></li><li><a href="global.html#MainPage">MainPage</a></li><li><a href="global.html#MHPForm">MHPForm</a></li><li><a href="global.html#SplashScreen">SplashScreen</a></li><li><a href="global.html#Stack">Stack</a></li><li><a href="global.html#styles">styles</a></li><li><a href="global.html#Symptoms">Symptoms</a></li><li><a href="global.html#WeeklyStack">WeeklyStack</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.6</a> on Thu Mar 25 2021 01:40:10 GMT-0500 (Central Daylight Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>
