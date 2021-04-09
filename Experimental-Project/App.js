@@ -1,21 +1,18 @@
 import { createStackNavigator } from '@react-navigation/stack';
-import { createAppContainer } from '@react-navigation/native';
 
 import { StyleSheet } from 'react-native';
-import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { Button, Text, TextInput, View, Image } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 
 //import LoginScreen from './pages/LoginScreen';
-import TabContainer from './pages/TabContainer';
-import InformationScreen from './pages/InformationScreen';
+import DrawerContainer from './pages/DrawerContainer';
+import AuthContext from './Context';
 
 import * as React from 'react';
 //import React, { useReducer, useMemo, useEffect, createContext } from 'react';
 //import * as React from "react";
 
-const AuthContext = React.createContext();
 const Stack = createStackNavigator();
 
 const styles = StyleSheet.create({ //I believe we will be able to create default styles that should make the code more readable later
@@ -145,7 +142,7 @@ export default function App({ navigation })
             ) : state.userToken == null ? (
               <Stack.Screen name='Login' component={LoginScreen} options={{ headerShown: false, animationTypeForReplace: state.isSignout ? 'pop' : 'push' }}/>
             ) : (
-              <Stack.Screen name="Main" component={TabContainer} options={{ headerShown: false }} />
+              <Stack.Screen name="Main" component={DrawerContainer} options={{ headerShown: false }} />
             )}
         </Stack.Navigator>
       </NavigationContainer>

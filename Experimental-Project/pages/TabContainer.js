@@ -1,7 +1,5 @@
-import { NavigationContainer } from '@react-navigation/native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import * as React from 'react';
-import { Button } from 'react-native';
 import { Ionicons  } from '@expo/vector-icons';
 //import React, { Component } from 'react';
 
