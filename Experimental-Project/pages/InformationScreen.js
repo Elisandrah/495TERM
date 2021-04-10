@@ -61,14 +61,14 @@ function MainPage({navigation}) { //This is the screen where we arrive when usin
             data={DATA}
             keyExtractor = {item => item.id}
             renderItem={({item}) => (
-              <View style = {{justifyContent: 'center', MarginBottom:10}}>
-                <TouchableWithoutFeedback onPress={() => navigation.navigate(item.id)}>
-                  <Text style = 
-                    {{backgroundColor:'blue', color:'white', padding:10, width:250}}>
+              <TouchableWithoutFeedback onPress={() => navigation.navigate(item.id)}>
+                <View style={styles.button}>
+                  <Text style=
+                    {styles.buttonText}>
                     {item.title}
                   </Text>
-                </TouchableWithoutFeedback>
-              </View>
+                </View>
+              </TouchableWithoutFeedback>
             )}
             
           />
@@ -118,5 +118,21 @@ const styles = StyleSheet.create
   italics: {
     fontFamily: 'Inter-SemiBoldItalic',
     fontSize: 15
+  },
+
+  button: {
+    justifyContent: 'center',
+    marginBottom: 20,
+    backgroundColor:'#F9D2D2',
+    borderRadius: 20,
+    padding: 20
+  },
+
+  buttonText: {
+    color: 'white',
+    padding: 10,
+    margin: 20,
+    textAlign: 'center',
+    fontSize: 24
   }
 });
