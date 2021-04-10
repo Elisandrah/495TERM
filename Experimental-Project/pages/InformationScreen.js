@@ -2,7 +2,7 @@ import AppLoading from 'expo-app-loading';
 import * as Font from 'expo-font';
 import * as React from 'react';
 //import React, { useState, Component } from 'react';
-import { Text, Button, View, Image, StyleSheet, FlatList, SafeAreaView, TouchableWithoutFeedback } from 'react-native';
+import { Text, Button, View, Image, StyleSheet, FlatList, SafeAreaView, TouchableHighlight } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import WeeklyInfoScreen from './WeeklyInfoScreen';
@@ -57,18 +57,20 @@ function MainPage({navigation}) { //This is the screen where we arrive when usin
       return (
         <SafeAreaView style={styles.container}>
           <FlatList
-            style={{marginTop:40}}
+            style={{marginTop:40, width: '100%'}}
             data={DATA}
             keyExtractor = {item => item.id}
             renderItem={({item}) => (
-              <TouchableWithoutFeedback onPress={() => navigation.navigate(item.id)}>
-                <View style={styles.button}>
-                  <Text style=
-                    {styles.buttonText}>
-                    {item.title}
-                  </Text>
-                </View>
-              </TouchableWithoutFeedback>
+              <View style={{ margin: 20 }}>
+                <TouchableHighlight underlayColor="#FFFFFF" onPress={() => navigation.navigate(item.id)}>
+                  <View style={styles.button}>
+                    <Text style=
+                      {styles.buttonText}>
+                      {item.title}
+                    </Text>
+                  </View>
+                </TouchableHighlight>
+              </View>
             )}
             
           />
@@ -91,7 +93,7 @@ export default class InformationScreen extends React.Component { //All screens a
       return (
         <NavigationContainer independent={true}>
           <Stack.Navigator>
-            <Stack.Screen name="Main" component={MainPage} options={{ headerShown: false}} />
+            <Stack.Screen name="Information" component={MainPage} options={{ headerShown: false}} />
             <Stack.Screen name="FAQ" component={FAQ} />
             <Stack.Screen name="Weekly Information" component={WeeklyInfoScreen} />
             <Stack.Screen name="Symptoms" component={Symptoms} />
@@ -122,7 +124,6 @@ const styles = StyleSheet.create
 
   button: {
     justifyContent: 'center',
-    marginBottom: 20,
     backgroundColor:'#F9D2D2',
     borderRadius: 20,
     padding: 20
@@ -130,8 +131,6 @@ const styles = StyleSheet.create
 
   buttonText: {
     color: 'white',
-    padding: 10,
-    margin: 20,
     textAlign: 'center',
     fontSize: 24
   }
