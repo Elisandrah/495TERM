@@ -31,19 +31,20 @@ const Item = ({ title }) => (
   </View>
 );
 
-export default class CalendarScreen extends React.Component {
-/*   async componentDidMount() {
+export default class Week1Screen extends React.Component {
+  async componentDidMount() {
      await Font.loadAsync({
-    'Inter-Black': require('/Experimental-Project/assets/fonts/Inter-Black.otf'),
+    'Inter-Black': require('../../assets/fonts/Inter-Black.otf'),
     'Inter-SemiBoldItalic':
       'https://rsms.me/inter/font-files/Inter-SemiBoldItalic.otf?v=3.12',
   });
-  } */ //Commented out for now due to errors, to fix later
+  }
   render()
   { 
       return (
         <SafeAreaView style={styles.container}>
           <SectionList
+            style={{marginTop:40, width: '100%'}}
             sections={DATA}
             keyExtractor={(item, index) => item + index}
             renderItem={({ item }) => <Item title={item} />}
@@ -59,19 +60,25 @@ export default class CalendarScreen extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingTop: StatusBar.currentHeight,
-    marginHorizontal: 16
+    backgroundColor: '#fff',
+    alignItems: 'center',
+    justifyContent: 'center'
   },
   item: {
-    backgroundColor: "#f9c2ff",
+    backgroundColor: "#F9D2D2",
     padding: 20,
-    marginVertical: 8
+    marginVertical: 20,
+    borderRadius: 20,
+    marginHorizontal: 20,
   },
   header: {
     fontSize: 32,
-    backgroundColor: "#fff"
+    backgroundColor: "#fff",
+    textAlign: 'center'
   },
   title: {
-    fontSize: 24
+    fontSize: 24,
+    textAlign: 'center',
+    color: 'white'
   }
 });

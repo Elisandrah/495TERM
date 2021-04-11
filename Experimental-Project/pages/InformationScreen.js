@@ -6,6 +6,7 @@ import { Text, Button, View, Image, StyleSheet, FlatList, SafeAreaView, Touchabl
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import WeeklyInfoScreen from './WeeklyInfoScreen';
+import SearchableSymptoms from './SearchableSymptoms';
 
 const Stack = createStackNavigator();
 
@@ -96,7 +97,7 @@ export default class InformationScreen extends React.Component { //All screens a
             <Stack.Screen name="Information" component={MainPage} options={{ headerShown: false}} />
             <Stack.Screen name="FAQ" component={FAQ} />
             <Stack.Screen name="Weekly Information" component={WeeklyInfoScreen} />
-            <Stack.Screen name="Symptoms" component={Symptoms} />
+            <Stack.Screen name="Symptoms" component={SearchableSymptoms} />
         </Stack.Navigator>
         </NavigationContainer>
     );
