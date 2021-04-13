@@ -5,24 +5,25 @@ import * as React from 'react';
 import { Text, Button, View, Image, StyleSheet, FlatList, SafeAreaView, TouchableHighlight, ScrollView, TextInput, Switch } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-import WeeklyInfoScreen from './WeeklyInfoScreen';
 import { SearchableFlatList } from "react-native-searchable-list";
+import Symptom1 from './symptoms_detail_pages/Symptom1';
+import Symptom2 from './symptoms_detail_pages/Symptom2';
 
-const Stack = createStackNavigator();
+const SymptomsStack = createStackNavigator();
 
 const DATA = [ //This generates the list, more can be added. Remember to add a navigation feature for it if adding more
   {
-    id: '1',
+    id: 'Symptom1',
     name: 'Symptom 1',
     category: 'Symptom 1'
   },
   {
-    id: '2',
+    id: 'Symptom2',
     name: 'Symptom 2',
     category: 'Symptom 2'
   },
   {
-    id: '3',
+    id: 'Symptom3',
     name: 'Symptom 3',
     category: 'Symptom 3'
   },
@@ -35,16 +36,22 @@ const Item = ({ title }) => (
   </View>
 );
 
-function MainPage({navigation}) { //This is the screen where we arrive when using the main navigation tab. Clicking each list item will bring you to its subsequent page
-      return (
-        <SafeAreaView style={styles.container}>
-
-        </SafeAreaView>
-    );
+export default class SymptomsNavigation extends React.Component {
+  render()
+  {
+    return(
+      <NavigationContainer independent={true}>
+        <SymptomsStack.Navigator>
+          <SymptomsStack.Screen name="Main" component={SearchableSymptoms} options={{ headerShown: false }} />
+          <SymptomsStack.Screen name="Symptom1" component={Symptom1} options={{ headerShown: false }} />
+          <SymptomsStack.Screen name="Symptom2" component={Symptom2} options={{ headerShown: false }} />
+        </SymptomsStack.Navigator>
+      </NavigationContainer>
+    )
+  }
 }
 
-
-export default class SearchableSymptoms extends React.Component { //All screens are defined in this section
+class SearchableSymptoms extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -67,37 +74,43 @@ export default class SearchableSymptoms extends React.Component { //All screens 
       const { searchTerm, searchAttribute, ignoreCase } = this.state;
       return (
         <View style={{ flex: 1 }}>
-          <View style={styles.pageContainer}>
-            <ScrollView>
-              <View style={styles.searchInputs}>
-                <TextInput
-                  style={styles.search}
-                  placeholder={"Search for your symptoms"}
-                  onChangeText={searchTerm => this.setState({ searchTerm })}
-                />
-              </View>
-              <SearchableFlatList
-                style={styles.list}
-                data={DATA}
-                searchTerm={searchTerm}
-                searchAttribute={searchAttribute}
-                ignoreCase={ignoreCase}
-                renderItem={({ item }) => (
-                  <Text style={styles.listItem}>{item.name}</Text>
-                )}
-                keyExtractor={item => item.id}
+        <View style={styles.pageContainer}>
+          <ScrollView>
+            <View style={styles.searchInputs}>
+              <TextInput
+                style={styles.search}
+                placeholder={"Search for your symptoms"}
+                onChangeText={searchTerm => this.setState({ searchTerm })}
               />
-            </ScrollView>
-          </View>
-{/*           <NavigationContainer independent={true}>
-            <Stack.Navigator>
-              <Stack.Screen name="Information" component={MainPage} options={{ headerShown: false }} />
-            </Stack.Navigator>
-          </NavigationContainer> */}
+            </View>
+            <SearchableFlatList
+              style={styles.list}
+              data={DATA}
+              searchTerm={searchTerm}
+              searchAttribute={searchAttribute}
+              ignoreCase={ignoreCase}
+              renderItem={({ item }) => (
+                <View style={{ margin: 20 }}>
+                  <TouchableHighlight underlayColor="#FFFFFF" onPress={() => this.props.navigation.navigate(item.id)}>
+                    <View style={styles.button}>
+                      <Text style=
+                        {styles.buttonText}>
+                        {item.name}
+                      </Text>
+                    </View>
+                  </TouchableHighlight>
+                </View>
+              )}
+              keyExtractor={item => item.id}
+            />
+          </ScrollView>
         </View>
+      </View>
     );
   }
 }
+
+//export default withNavigation(SearchableSymptoms);
 
 const styles = StyleSheet.create({
   pageContainer: {
@@ -145,5 +158,17 @@ const styles = StyleSheet.create({
     borderLeftWidth: 1,
     alignSelf: "center",
     flex: 2
+  },
+  button: {
+    justifyContent: 'center',
+    backgroundColor:'#F9D2D2',
+    borderRadius: 20,
+    padding: 20
+  },
+
+  buttonText: {
+    color: 'white',
+    textAlign: 'center',
+    fontSize: 24
   }
 });
