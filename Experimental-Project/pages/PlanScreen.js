@@ -106,7 +106,7 @@ function MHPForm({navigation}){
 
       <Button
         onPress={() =>
-          {navigation.navigate("MHP Data", {
+          {navigation.navigate("MHP Second Page", {
             id: id,
             provider: provider,
             age: age,
@@ -119,30 +119,269 @@ function MHPForm({navigation}){
             fetal: fetal,
           })
         }}
-        title="View entered data"
+        title="Enter Second Page"
       />
     </View>
 );
 }
 
-function DisplayMHP({route, navigation}){
+function MHPSecondPage({route, navigation}){
+  const [PhysStrengths, setPhysStrengths] = useState('');
+  const [PhysRiskFactor, setPhysRisk] = useState('');
+  const [SocialStrengths, setSocialStrengths] = useState('');
+  const [SocialRiskFactor, setSocialRisk] = useState('');
+  const [Goals, setGoals] = useState('');
   const {id, provider, age, weight, weightGain, bp, fundal, meds, urine, fetal} = route.params;
 
-  return(
-    <View style={styles.bold}>
-      <Text>ID entered is {id}</Text>
-      <Text>Provider entered is {provider}</Text>
-      <Text>Age entered is {age}</Text>
-      <Text>Weight entered is {weight}</Text>
-      <Text>Weight Gained is {weightGain}</Text>
-      <Text>Blood Pressure entered is {bp}</Text>
-      <Text>Fundal Height is {fundal}</Text>
-      <Text>Medication entered is {meds}</Text>
-      <Text>Urine Results are {urine}</Text>
-      <Text>Fetal Tones entered are {fetal}</Text>
 
+    return(
+    <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
+      <TextInput
+        style={styles.input}
+        onChangeText={PhysStrengths => setPhysStrengths(PhysStrengths)}
+        value={PhysStrengths}
+        multiline={true}
+        placeholder="Enter Physical Strengths"
+      />
+      <TextInput
+        style={styles.input}
+        onChangeText={PhysRiskFactor => setPhysRisk(PhysRiskFactor)}
+        value={PhysRiskFactor}
+        multiline={true}
+        placeholder="Enter Physical Risk Factors"
+      />
+      <TextInput
+        style={styles.input}
+        onChangeText={SocialStrengths => setSocialStrengths(SocialStrengths)}
+        value={SocialStrengths}
+        multiline={true}
+        placeholder="Enter Psycho-Social Strengths"
+      />
+      <TextInput
+        style={styles.input}
+        onChangeText={SocialRiskFactor => setSocialRisk(SocialRiskFactor)}
+        value={SocialRiskFactor}
+        multiline={true}
+        placeholder="Enter Psycho-Social Risk Factors"
+      />
+      <TextInput
+        style={styles.input}
+        onChangeText={Goals => setGoals(Goals)}
+        value={Goals}
+        multiline={true}
+        placeholder="Enter Psycho-Social Risk Factors"
+      />
+      <Button
+        onPress={() =>
+          {navigation.navigate("MHP Data", {
+            id: id,
+            provider: provider,
+            age: age,
+            weight: weight,
+            weightGain: weightGain,
+            bp: bp,
+            fundal: fundal,
+            meds: meds,
+            urine: urine,
+            fetal: fetal,
+            PhysStrengths: PhysStrengths,
+            PhysRiskFactor: PhysRiskFactor,
+            SocialStrengths: SocialStrengths,
+            SocialRiskFactor: SocialRiskFactor,
+            Goals: Goals,
+          })
+        }}
+        title="View Entered Data"
+      />
+      <Button
+        onPress={() =>
+          {navigation.navigate("Postnatal", {
+            id: id,
+            provider: provider,
+            age: age,
+            weight: weight,
+            weightGain: weightGain,
+            bp: bp,
+            fundal: fundal,
+            meds: meds,
+            urine: urine,
+            fetal: fetal,
+            PhysStrengths: PhysStrengths,
+            PhysRiskFactor: PhysRiskFactor,
+            SocialStrengths: SocialStrengths,
+            SocialRiskFactor: SocialRiskFactor,
+            Goals: Goals,
+          })
+        }}
+        title="Postnatal"
+      />
     </View>
-  );
+    )
+
+}
+
+function MHPPostNatal({route, navigation}){
+  const [Delivery, setDelivery] = useState('');
+  const [Complications, setComplications] = useState('');
+  const [InfantWeight, setInfWeight] = useState('');
+  const [Contraception, setContraception] = useState('');
+  const [BreastFeeding, setBreastFeeding] = useState('');
+  const {id, provider, age, weight, weightGain, bp, fundal, meds, urine, fetal, PhysStrengths, PhysRiskFactor,
+    SocialStrengths, SocialRiskFactor, Goals} = route.params;
+
+  return(
+    <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
+      <TextInput
+        style={styles.input}
+        onChangeText={Delivery => setDelivery(Delivery)}
+        value={Delivery}
+        multiline={true}
+        placeholder="Deliver (Vaginal or Cesarean"
+      />
+      <TextInput
+        style={styles.input}
+        onChangeText={Complications => setComplications(Complications)}
+        value={Complications}
+        multiline={true}
+        placeholder="Complications"
+      />
+      <TextInput
+        style={styles.input}
+        onChangeText={InfantWeight => setInfWeight(InfantWeight)}
+        value={InfantWeight}
+        multiline={true}
+        placeholder="Enter Infant Weight"
+      />
+      <TextInput
+        style={styles.input}
+        onChangeText={Contraception => setContraception(Contraception)}
+        value={Contraception}
+        multiline={true}
+        placeholder="Enter Contraception"
+      />
+      <TextInput
+        style={styles.input}
+        onChangeText={BreastFeeding => setBreastFeeding(BreastFeeding)}
+        value={BreastFeeding}
+        multiline={true}
+        placeholder="Breastfeeding (Yes/No)"
+      />
+      <Button
+        onPress={() =>
+          {navigation.navigate("MHP Data", {
+            id: id,
+            provider: provider,
+            age: age,
+            weight: weight,
+            weightGain: weightGain,
+            bp: bp,
+            fundal: fundal,
+            meds: meds,
+            urine: urine,
+            fetal: fetal,
+            PhysStrengths: PhysStrengths,
+            PhysRiskFactor: PhysRiskFactor,
+            SocialStrengths: SocialStrengths,
+            SocialRiskFactor: SocialRiskFactor,
+            Goals: Goals,
+            Delivery: Delivery,
+            Complications: Complications,
+            InfantWeight: InfantWeight,
+            Contraception: Contraception,
+            BreastFeeding: BreastFeeding
+          })
+        }}
+        title="View Entered Data"
+      />
+    </View>
+  )
+
+}
+
+function getMHP({route}){
+  const {id, provider, age, weight, weightGain, bp, fundal, meds, urine, fetal, PhysStrengths, PhysRiskFactor,
+    SocialStrengths, SocialRiskFactor, Goals, Delivery, Complications, InfantWeight, Contraception, BreastFeeding} = route.params;
+
+  const dataExport = {
+    id: id,
+    provider: provider,
+    age: age,
+    weight: weight,
+    weightGain: weightGain,
+    bp: bp,
+    funal: fundal,
+    meds: meds,
+    urine: urine,
+    fetal: fetal,
+    PhysStrengths: PhysStrengths,
+    PhysRiskFactor: PhysRiskFactor,
+    SocialStrengths: SocialStrengths,
+    SocialRiskFactor: SocialRiskFactor,
+    Goals: Goals,
+    Delivery: Delivery,
+    Complications: Complications,
+    InfantWeight: InfantWeight,
+    Contraception: Contraception,
+    BreastFeeding: BreastFeeding
+  }
+
+  var obj = JSON.parse(dataExport)
+  return obj
+}
+
+function DisplayMHP({route, navigation}){
+  const {id, provider, age, weight, weightGain, bp, fundal, meds, urine, fetal, PhysStrengths, PhysRiskFactor,
+  SocialStrengths, SocialRiskFactor, Goals, Delivery, Complications, InfantWeight, Contraception, BreastFeeding} = route.params;
+
+  getMHP
+
+
+  if (Delivery != '') { //Display Postnatal Information
+    return(
+      <View style={styles.bold}>
+        <Text>ID entered is {id}</Text>
+        <Text>Provider entered is {provider}</Text>
+        <Text>Age entered is {age}</Text>
+        <Text>Weight entered is {weight}</Text>
+        <Text>Weight Gained is {weightGain}</Text>
+        <Text>Blood Pressure entered is {bp}</Text>
+        <Text>Fundal Height is {fundal}</Text>
+        <Text>Medication entered is {meds}</Text>
+        <Text>Urine Results are {urine}</Text>
+        <Text>Fetal Tones entered are {fetal}</Text>
+        <Text>Physical Strengths are {PhysStrengths}</Text>
+        <Text>Physical Risk Factors are {PhysRiskFactor}</Text>
+        <Text>Psycho-Social Strengths are {SocialStrengths}</Text>
+        <Text>Psycho-Social Risk Factors are {SocialRiskFactor}</Text>
+        <Text>Goals are {Goals}</Text>
+        <Text>Complications are {Complications}</Text>
+        <Text>Infant Weight is {InfantWeight}</Text>
+        <Text>Contraception used is {Contraception}</Text>
+        <Text>Breastfeeding: {BreastFeeding}</Text>
+      </View>
+    );
+  }
+  else{ //Display information without Postnatal
+    return(
+      <View style={styles.bold}>
+        <Text>ID entered is {id}</Text>
+        <Text>Provider entered is {provider}</Text>
+        <Text>Age entered is {age}</Text>
+        <Text>Weight entered is {weight}</Text>
+        <Text>Weight Gained is {weightGain}</Text>
+        <Text>Blood Pressure entered is {bp}</Text>
+        <Text>Fundal Height is {fundal}</Text>
+        <Text>Medication entered is {meds}</Text>
+        <Text>Urine Results are {urine}</Text>
+        <Text>Fetal Tones entered are {fetal}</Text>
+        <Text>Physical Strengths are {PhysStrengths}</Text>
+        <Text>Physical Risk Factors are {PhysRiskFactor}</Text>
+        <Text>Psycho-Social Strengths are {SocialStrengths}</Text>
+        <Text>Psycho-Social Risk Factors are {SocialRiskFactor}</Text>
+        <Text>Goals are {Goals}</Text>
+      </View>
+    );
+  }
 }
 
 function MainPage({navigation}){
@@ -182,6 +421,8 @@ export default class CalendarScreen extends React.Component {
         <Stack.Navigator>
           <Stack.Screen name="Main" component={MainPage} options={{ headerShown: false}} />
           <Stack.Screen name="Maternal Health Plan" component={MHPForm} />
+          <Stack.Screen name="MHP Second Page" component={MHPSecondPage} />
+          <Stack.Screen name="Postnatal" component={MHPPostNatal} />
           <Stack.Screen name="MHP Data" component={DisplayMHP} />
       </Stack.Navigator>
       </NavigationContainer>
