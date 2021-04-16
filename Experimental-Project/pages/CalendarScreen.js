@@ -1,16 +1,7 @@
-import AppLoading from 'expo-app-loading';
 import * as Font from 'expo-font';
-//import { Component } from 'react';
 import * as React from 'react';
 import { Text, Button, View, Image, StyleSheet } from 'react-native';
-import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
-import {createBottomTabNavigator} from '@react-navigation/bottom-tabs'
-import Modal from 'react-native-modal';
-
-import { TextInput } from 'react-native-gesture-handler';
-
-
+import { Calendar } from 'react-native-calendars';
 
 
 export default class CalendarScreen extends React.Component {
@@ -24,14 +15,13 @@ export default class CalendarScreen extends React.Component {
   render()
   { 
       return (
-          <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-        <Text>Calendar</Text>
-            <Text>This will be the calendar tab</Text>
-            <Text style={styles.bold}>For scheduling</Text>
-            <Text style={styles.italics}>
-              Lots of appointments as well as milestones for pregnancy
-            </Text>
-          </View>
+        <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
+          <Text style={styles.bold}>For scheduling</Text>
+          <Text style={styles.italics}> 
+            Lots of appointments as well as milestones for pregnancy 
+          </Text>
+          <Calendar />
+        </View>
     );
   }
 }
@@ -47,11 +37,11 @@ const styles = StyleSheet.create
 
   bold: {
     fontFamily: 'Inter-Black',
-    fontSize: 20
+    fontSize: 14
   },
 
   italics: {
     fontFamily: 'Inter-SemiBoldItalic',
-    fontSize: 15
+    fontSize: 11
   }
 });
