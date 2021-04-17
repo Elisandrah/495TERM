@@ -1,15 +1,7 @@
-import AppLoading from 'expo-app-loading';
 import * as Font from 'expo-font';
 import * as React from 'react';
-//import React, { useState, Component } from 'react';
 import { Text, Button, View, Image, StyleSheet, FlatList, SafeAreaView, TouchableHighlight, ScrollView, TextInput, Switch } from 'react-native';
-import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
 import { SearchableFlatList } from "react-native-searchable-list";
-import Symptom1 from './symptoms_detail_pages/Symptom1';
-import Symptom2 from './symptoms_detail_pages/Symptom2';
-
-const SymptomsStack = createStackNavigator();
 
 const DATA = [ //This generates the list, more can be added. Remember to add a navigation feature for it if adding more
   {
@@ -36,22 +28,7 @@ const Item = ({ title }) => (
   </View>
 );
 
-export default class SymptomsNavigation extends React.Component {
-  render()
-  {
-    return(
-      <NavigationContainer independent={true}>
-        <SymptomsStack.Navigator>
-          <SymptomsStack.Screen name="Main" component={SearchableSymptoms} options={{ headerShown: false }} />
-          <SymptomsStack.Screen name="Symptom1" component={Symptom1} options={{ headerShown: false }} />
-          <SymptomsStack.Screen name="Symptom2" component={Symptom2} options={{ headerShown: false }} />
-        </SymptomsStack.Navigator>
-      </NavigationContainer>
-    )
-  }
-}
-
-class SearchableSymptoms extends React.Component {
+export default class SearchableSymptoms extends React.Component {
   constructor(props) {
     super(props);
     this.state = {

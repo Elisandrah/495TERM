@@ -1,13 +1,6 @@
-import AppLoading from 'expo-app-loading';
 import * as Font from 'expo-font';
 import * as React from 'react';
-//import React, { Component } from 'react';
 import { Text, Button, View, Image, StyleSheet, SafeAreaView } from 'react-native';
-
-import { TextInput } from 'react-native-gesture-handler';
-
-
-
 
 export default class HomeScreen extends React.Component {
   async componentDidMount() {
@@ -40,17 +33,19 @@ export default class HomeScreen extends React.Component {
               <Text style={styles.blackText}>
                 Questions about your symptoms?
               </Text>
-              <View style={{flexDirection: 'row', alignItems: 'center'}}>
-                <View style={styles.smallBox}>
-                  <Text style={styles.smallBlackText}>
-                    Ask your nurse
-                  </Text>
-                </View>
-                <Text style={{textAlign: 'center'}}>or...</Text>
-                <View style={styles.smallBox}>
-                  <Text style={styles.smallBlackText}>
-                    Read about them
-                  </Text>
+              <View style={{alignItems: 'center'}}>
+                <View style={{flexDirection: 'row', alignItems: 'center'}}>
+                  <View style={styles.smallBox}>
+                    <Text style={styles.smallBlackText}>
+                      Ask your nurse
+                    </Text>
+                  </View>
+                  <Text style={{textAlign: 'center'}}>or...</Text>
+                  <View style={styles.smallBox}>
+                    <Text style={styles.smallBlackText}>
+                      Read about them
+                    </Text>
+                  </View>
                 </View>
               </View>
             </View>
