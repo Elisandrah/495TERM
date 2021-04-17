@@ -5,19 +5,19 @@ import { SearchableFlatList } from "react-native-searchable-list";
 
 const DATA = [ //This generates the list, more can be added. Remember to add a navigation feature for it if adding more
   {
-    id: 'Symptom1',
-    name: 'Symptom 1',
-    category: 'Symptom 1'
+    id: 'Question1',
+    name: 'Question 1',
+    category: 'Question 1'
   },
   {
-    id: 'Symptom2',
-    name: 'Symptom 2',
-    category: 'Symptom 2'
+    id: 'Question2',
+    name: 'Question 2',
+    category: 'Question 2'
   },
   {
-    id: 'Symptom3',
-    name: 'Symptom 3',
-    category: 'Symptom 3'
+    id: 'Question3',
+    name: 'Question 3',
+    category: 'Question 3'
   },
 
 ];
@@ -28,7 +28,7 @@ const Item = ({ title }) => (
   </View>
 );
 
-export default class SearchableSymptoms extends React.Component {
+export default class FAQScreen extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
