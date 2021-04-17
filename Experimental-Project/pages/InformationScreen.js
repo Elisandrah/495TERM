@@ -18,17 +18,6 @@ const DATA = [ //This generates the list, more can be added. Remember to add a n
 
 ];
 
-function FAQ(){
-  return (
-    <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-      <Text style={styles.bold}>FAQ</Text>
-      <Text style={styles.italics}>
-        Frequently Asked Questions will be present here
-      </Text>
-    </View>
-);
-}
-
 const Item = ({ title }) => (
   <View style={styles.item}>
     <Text style={styles.title}>{title}</Text>

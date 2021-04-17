@@ -15,8 +15,11 @@ import { NavigationContainer } from '@react-navigation/native';
 
 import InformationScreen from './InformationScreen';
 
+import FAQScreen from './FAQScreen';
 import WeeklyInfoScreen from './WeeklyInfoScreen';
 import SearchableSymptoms from './SearchableSymptoms';
+
+import Question1 from './questions_detail_pages/Question1';
 
 import Week1 from './weekly_info_pages/Week1';
 
@@ -33,9 +36,11 @@ export default class InfoNavigationHelper extends React.Component {
         <Stack.Navigator initialRouteName="Information">
           <Stack.Screen name="Information" component={InformationScreen} options={{ headerShown: false }} />
 
-          {/* <Stack.Screen name="FAQ" component={FAQ} /> */}
+          <Stack.Screen name="FAQ" component={FAQScreen} />
           <Stack.Screen name="Weekly Information" component={WeeklyInfoScreen} />
           <Stack.Screen name="SearchableSymptoms" component={SearchableSymptoms} />
+
+          <Stack.Screen name="Question1" component={Question1}/>
 
           <Stack.Screen name="Week 1" component={Week1}/>
 
