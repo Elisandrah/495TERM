@@ -1,19 +1,8 @@
-import AppLoading from 'expo-app-loading';
 import * as Font from 'expo-font';
 import * as React from 'react';
-//import React, { Component } from 'react';
-import { Text, Button, View, Image, StyleSheet } from 'react-native';
-import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
-import {createBottomTabNavigator} from '@react-navigation/bottom-tabs'
-import Modal from 'react-native-modal';
+import { Text, Button, View, Image, StyleSheet, SafeAreaView } from 'react-native';
 
-import { TextInput } from 'react-native-gesture-handler';
-
-
-
-
-export default class CalendarScreen extends React.Component {
+export default class HomeScreen extends React.Component {
   async componentDidMount() {
      await Font.loadAsync({
     'Inter-Black': require('../assets/fonts/Inter-Black.otf'),
@@ -24,14 +13,55 @@ export default class CalendarScreen extends React.Component {
   render()
   { 
       return (
-          <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-        <Text>Calendar</Text>
-            <Text>This will be the home tab</Text>
-            <Text style={styles.bold}>Basic entry page</Text>
-            <Text style={styles.italics}>
-              Good spot for important notifications and navigation
-            </Text>
+        <SafeAreaView style={styles.container}>
+          <View>
+            <View style={styles.textBox}>
+              <Text style={styles.blackText}>
+                Welcome, Username
+              </Text>
+            </View>
+
+            <View style={styles.borderBox}>
+              <View style={styles.smallBox}>
+                <Text style={styles.blackText}>
+                  Click here to read important facts about this week.
+                </Text>
+              </View>
+            </View>
+
+            <View style={styles.borderBox}>
+              <Text style={styles.blackText}>
+                Questions about your symptoms?
+              </Text>
+              <View style={{alignItems: 'center'}}>
+                <View style={{flexDirection: 'row', alignItems: 'center'}}>
+                  <View style={styles.smallBox}>
+                    <Text style={styles.smallBlackText}>
+                      Ask your nurse
+                    </Text>
+                  </View>
+                  <Text style={{textAlign: 'center'}}>or...</Text>
+                  <View style={styles.smallBox}>
+                    <Text style={styles.smallBlackText}>
+                      Read about them
+                    </Text>
+                  </View>
+                </View>
+              </View>
+            </View>
+
+            <View style={styles.borderBox}>
+              <Text style={styles.blackText}>
+                Upcoming appointments:
+              </Text>
+              <View style={styles.smallBox}>
+                <Text style={styles.smallBlackText}>
+                  Sample text.
+                </Text>
+              </View>
+            </View>
           </View>
+        </SafeAreaView>
     );
   }
 }
@@ -53,5 +83,47 @@ const styles = StyleSheet.create
   italics: {
     fontFamily: 'Inter-SemiBoldItalic',
     fontSize: 15
+  },
+
+  textBox: {
+    justifyContent: 'center',
+    backgroundColor:'#F9D2D2',
+    borderRadius: 20,
+    padding: 20,
+    margin: 20
+  },
+
+  borderBox: {
+    justifyContent: 'center',
+    backgroundColor:'#F9D2D2',
+    borderRadius: 20,
+    padding: 5,
+    margin: 20
+  },
+
+  smallBox: {
+    justifyContent: 'center',
+    backgroundColor:'#F9E8E8',
+    borderRadius: 15,
+    padding: 20,
+    margin: 5
+  },
+
+  whiteText: {
+    color: 'white',
+    textAlign: 'center',
+    fontSize: 16
+  },
+
+  blackText: {
+    color: 'black',
+    textAlign: 'center',
+    fontSize: 20
+  },
+
+  smallBlackText: {
+    color: 'black',
+    textAlign: 'center',
+    fontSize: 16
   }
 });

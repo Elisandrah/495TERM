@@ -1,14 +1,12 @@
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import * as React from 'react';
 import { Ionicons  } from '@expo/vector-icons';
-//import React, { Component } from 'react';
-
 
 import HomeScreen from './HomeScreen';
 import CalendarScreen from './CalendarScreen';
 import PlanScreen from './PlanScreen';
 import ContactScreen from './ContactScreen';
-import InformationScreen from './InformationScreen';
+import InfoNavigationHelper from './NavigationHelper';
 
 const Tab = createBottomTabNavigator();
 
@@ -70,7 +68,7 @@ export default class Nav extends React.Component { //This holds the tabs that we
     			<Tab.Screen name="Calendar" component={CalendarScreen} />
     			<Tab.Screen name="Plan" component={PlanScreen} />
     			<Tab.Screen name="Contact" component={ContactScreen} />
-    			<Tab.Screen name="Info" component={InformationScreen} />  
+    			<Tab.Screen name="Info" component={InfoNavigationHelper} />  
     		</Tab.Navigator>
   		);
 	}

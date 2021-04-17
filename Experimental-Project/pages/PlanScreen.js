@@ -1,8 +1,7 @@
-import AppLoading from 'expo-app-loading';
 import * as Font from 'expo-font';
 import * as React from 'react';
 import { useState } from 'react';
-import { Text, Button, View, Image, StyleSheet, Alert } from 'react-native';
+import { Text, Button, View, Image, StyleSheet, Alert, SafeAreaView, TouchableHighlight } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import AsyncStorage from '@react-native-async-storage/async-storage';
@@ -388,26 +387,22 @@ function MHPHistory({navigation}){
 
 function MainPage({navigation}){
   return (
-    <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-  <Text>Calendar</Text>
-      <Text>This will be the plan tab</Text>
-      <Text style={styles.bold}>Displays MHP</Text>
-      <Text style={styles.italics}>
-        Lists the maternal health plan for the patient
-      </Text>
-      <Button
-        onPress={() =>
-          navigation.navigate("Maternal Health Plan")
-        }
-        title="Fill out Maternal Health Plan"
-      />
-      <Button
-        onPress={() =>
-          navigation.navigate("MHP History")
-        }
-        title="View Completed Maternal Health Plans"
-      />
-    </View>
+    <SafeAreaView style={styles.container}>
+      <View style={{marginTop: 40, width: '100%'}}>
+        <TouchableHighlight underlayColor="#FFFFFF" onPress={() => navigation.navigate("Maternal Health Plan")}>
+          <View style={styles.textBox}>
+            <Text style={styles.blackText}>
+              Fill out Maternal Health Plan
+            </Text>
+          </View>
+        </TouchableHighlight>
+        <View style={styles.textBox}>
+          <Text style={styles.blackText}>
+            View your plan history
+          </Text>
+        </View>
+      </View>
+    </SafeAreaView>
   );
 
 }
@@ -465,6 +460,47 @@ const styles = StyleSheet.create
     width: 200,
     margin: 8,
     borderWidth: 1,
+  },
 
+  textBox: {
+    justifyContent: 'center',
+    backgroundColor:'#F9D2D2',
+    borderRadius: 20,
+    padding: 20,
+    margin: 20
+  },
+
+  borderBox: {
+    justifyContent: 'center',
+    backgroundColor:'#F9D2D2',
+    borderRadius: 20,
+    padding: 5,
+    margin: 20
+  },
+
+  smallBox: {
+    justifyContent: 'center',
+    backgroundColor:'#F9E8E8',
+    borderRadius: 15,
+    padding: 20,
+    margin: 5
+  },
+
+  whiteText: {
+    color: 'white',
+    textAlign: 'center',
+    fontSize: 16
+  },
+
+  blackText: {
+    color: 'black',
+    textAlign: 'center',
+    fontSize: 20
+  },
+
+  smallBlackText: {
+    color: 'black',
+    textAlign: 'center',
+    fontSize: 16
   }
 });
