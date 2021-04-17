@@ -5,12 +5,10 @@ import { useState } from 'react';
 import { Text, Button, View, Image, StyleSheet, Alert } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs'
-import Modal from 'react-native-modal';
 
 import { FlatList, State, TextInput } from 'react-native-gesture-handler';
-import { onChange } from 'react-native-reanimated';
-import { SafeAreaInsetsContext } from 'react-native-safe-area-context';
 
 const Stack = createStackNavigator();
 
@@ -384,6 +382,10 @@ function DisplayMHP({route, navigation}){
   }
 }
 
+function MHPHistory({navigation}){
+
+}
+
 function MainPage({navigation}){
   return (
     <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
@@ -398,6 +400,12 @@ function MainPage({navigation}){
           navigation.navigate("Maternal Health Plan")
         }
         title="Fill out Maternal Health Plan"
+      />
+      <Button
+        onPress={() =>
+          navigation.navigate("MHP History")
+        }
+        title="View Completed Maternal Health Plans"
       />
     </View>
   );
@@ -424,6 +432,7 @@ export default class CalendarScreen extends React.Component {
           <Stack.Screen name="MHP Second Page" component={MHPSecondPage} />
           <Stack.Screen name="Postnatal" component={MHPPostNatal} />
           <Stack.Screen name="MHP Data" component={DisplayMHP} />
+          <Stack.Screen name="MHP History" component={MHPHistory} />
       </Stack.Navigator>
       </NavigationContainer>
     );
