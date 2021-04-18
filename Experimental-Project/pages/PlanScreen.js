@@ -1,16 +1,13 @@
-import AppLoading from 'expo-app-loading';
 import * as Font from 'expo-font';
 import * as React from 'react';
 import { useState } from 'react';
-import { Text, Button, View, Image, StyleSheet, Alert } from 'react-native';
+import { Text, Button, View, Image, StyleSheet, Alert, SafeAreaView, TouchableHighlight } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs'
-import Modal from 'react-native-modal';
 
 import { FlatList, State, TextInput } from 'react-native-gesture-handler';
-import { onChange } from 'react-native-reanimated';
-import { SafeAreaInsetsContext } from 'react-native-safe-area-context';
 
 const Stack = createStackNavigator();
 
@@ -298,11 +295,56 @@ function MHPPostNatal({route, navigation}){
 
 }
 
-function getMHP({route}){
-  const {id, provider, age, weight, weightGain, bp, fundal, meds, urine, fetal, PhysStrengths, PhysRiskFactor,
-    SocialStrengths, SocialRiskFactor, Goals, Delivery, Complications, InfantWeight, Contraception, BreastFeeding} = route.params;
+const storeData = async (obj) => {
+  try {
+    await AsyncStorage.setItem(Date, obj)
+  } catch (e) {
+    return(
+      <View style = {styles.bold}>
+        <Text>The async failed</Text>
+      </View>
+    )
+  }
+}
+
+function getMHP(o){
 
   const dataExport = {
+    date: o.date,
+    id: o.id,
+    provider: o.provider,
+    age: o.age,
+    weight: o.weight,
+    weightGain: o.weightGain,
+    bp: o.bp,
+    funal: o.fundal,
+    meds: o.meds,
+    urine: o.urine,
+    fetal: o.fetal,
+    PhysStrengths: o.PhysStrengths,
+    PhysRiskFactor: o.PhysRiskFactor,
+    SocialStrengths: o.SocialStrengths,
+    SocialRiskFactor: o.SocialRiskFactor,
+    Goals: o.Goals,
+    Delivery: o.Delivery,
+    Complications: o.Complications,
+    InfantWeight: o.InfantWeight,
+    Contraception: o.Contraception,
+    BreastFeeding: o.BreastFeeding
+  }
+
+  var obj = JSON.stringify(dataExport)
+  storeData(obj);
+  return obj;
+}
+
+function DisplayMHP({route, navigation}){
+  const {id, provider, age, weight, weightGain, bp, fundal, meds, urine, fetal, PhysStrengths, PhysRiskFactor,
+  SocialStrengths, SocialRiskFactor, Goals, Delivery, Complications, InfantWeight, Contraception, BreastFeeding} = route.params;
+
+  var date = new Date().toString();
+  const MHPObj = {
+    date: date,
     id: id,
     provider: provider,
     age: age,
@@ -325,20 +367,13 @@ function getMHP({route}){
     BreastFeeding: BreastFeeding
   }
 
-  var obj = JSON.parse(dataExport)
-  return obj
-}
-
-function DisplayMHP({route, navigation}){
-  const {id, provider, age, weight, weightGain, bp, fundal, meds, urine, fetal, PhysStrengths, PhysRiskFactor,
-  SocialStrengths, SocialRiskFactor, Goals, Delivery, Complications, InfantWeight, Contraception, BreastFeeding} = route.params;
-
-  getMHP
+  getMHP(MHPObj);
 
 
   if (Delivery != '') { //Display Postnatal Information
     return(
       <View style={styles.bold}>
+        <Text>Todays Date is: {date}</Text>
         <Text>ID entered is {id}</Text>
         <Text>Provider entered is {provider}</Text>
         <Text>Age entered is {age}</Text>
@@ -364,6 +399,7 @@ function DisplayMHP({route, navigation}){
   else{ //Display information without Postnatal
     return(
       <View style={styles.bold}>
+        <Text>Todays Date is: {date}</Text>
         <Text>ID entered is {id}</Text>
         <Text>Provider entered is {provider}</Text>
         <Text>Age entered is {age}</Text>
@@ -384,22 +420,33 @@ function DisplayMHP({route, navigation}){
   }
 }
 
+async function MHPHistory({navigation}){
+  const keys = await AsyncStorage.getAllKeys();
+  const result = await AsyncStorage.multiGet(keys);
+    
+  
+}
+
 function MainPage({navigation}){
   return (
-    <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-  <Text>Calendar</Text>
-      <Text>This will be the plan tab</Text>
-      <Text style={styles.bold}>Displays MHP</Text>
-      <Text style={styles.italics}>
-        Lists the maternal health plan for the patient
-      </Text>
-      <Button
-        onPress={() =>
-          navigation.navigate("Maternal Health Plan")
-        }
-        title="Fill out Maternal Health Plan"
-      />
-    </View>
+    <SafeAreaView style={styles.container}>
+      <View style={{marginTop: 40, width: '100%'}}>
+        <TouchableHighlight underlayColor="#FFFFFF" onPress={() => navigation.navigate("Maternal Health Plan")}>
+          <View style={styles.textBox}>
+            <Text style={styles.blackText}>
+              Fill out Maternal Health Plan
+            </Text>
+          </View>
+        </TouchableHighlight>
+        <TouchableHighlight underlayColor="#FFFFFF" onPress={() => navigation.navigate("MHP History")}>
+          <View style={styles.textBox}>
+            <Text style={styles.blackText}>
+              View your plan history
+            </Text>
+          </View>
+        </TouchableHighlight>
+      </View>
+    </SafeAreaView>
   );
 
 }
@@ -424,6 +471,7 @@ export default class CalendarScreen extends React.Component {
           <Stack.Screen name="MHP Second Page" component={MHPSecondPage} />
           <Stack.Screen name="Postnatal" component={MHPPostNatal} />
           <Stack.Screen name="MHP Data" component={DisplayMHP} />
+          <Stack.Screen name="MHP History" component={MHPHistory} />
       </Stack.Navigator>
       </NavigationContainer>
     );
@@ -456,6 +504,47 @@ const styles = StyleSheet.create
     width: 200,
     margin: 8,
     borderWidth: 1,
+  },
 
+  textBox: {
+    justifyContent: 'center',
+    backgroundColor:'#F9D2D2',
+    borderRadius: 20,
+    padding: 20,
+    margin: 20
+  },
+
+  borderBox: {
+    justifyContent: 'center',
+    backgroundColor:'#F9D2D2',
+    borderRadius: 20,
+    padding: 5,
+    margin: 20
+  },
+
+  smallBox: {
+    justifyContent: 'center',
+    backgroundColor:'#F9E8E8',
+    borderRadius: 15,
+    padding: 20,
+    margin: 5
+  },
+
+  whiteText: {
+    color: 'white',
+    textAlign: 'center',
+    fontSize: 16
+  },
+
+  blackText: {
+    color: 'black',
+    textAlign: 'center',
+    fontSize: 20
+  },
+
+  smallBlackText: {
+    color: 'black',
+    textAlign: 'center',
+    fontSize: 16
   }
 });
