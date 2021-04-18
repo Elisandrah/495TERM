@@ -1,3 +1,12 @@
+// Calendar Tab. Uses react-native-calendars. I had an issue with that library.
+// When the agenda list swipes up to the next day, the buttons I created get displayed in 
+// the wrong order, and there is not even a reliable way to tell how they'll end up.
+// So, I modified two of their files to fix it. I disabled the ability to swipe the list.
+// Also, to select another day, the user must tap the knob or slide down the calendar.
+// The result is still user friendly, I think. Actually, the way the list swiped up, but 
+// not back down, was kind of annoying. I put the changed files in the patches_backup
+// folder in case they get replaced by an installation.
+
 import * as Font from 'expo-font';
 import * as React from 'react';
 import { Text, Button, View, StyleSheet, TouchableOpacity } from 'react-native';
@@ -39,7 +48,7 @@ class DeleteEvent extends React.Component {
             console.log(this.state);
           }}
         >
-          <Text style={{fontSize: 14, color: "#007aff"}}>Delete Event</Text>
+          <Text style={{fontSize: 14, color: "#007aff"}}>Delete</Text>
         </TouchableOpacity>
       </View>
     );
