@@ -1,8 +1,50 @@
 import * as Font from 'expo-font';
 import * as React from 'react';
-import { Text, Button, View, Image, StyleSheet } from 'react-native';
-import { Agenda, Calendar, CalendarList } from 'react-native-calendars';
+import { Text, Button, View, StyleSheet, TouchableOpacity } from 'react-native';
+import { Agenda } from 'react-native-calendars';
 
+class AddEvent extends React.Component {
+  constructor(props) {
+    super(props);
+    this.props = props;
+    this.state = {events: props.events};
+  }
+  render() {
+    return (
+      <View style={this.props.style}>
+        <TouchableOpacity
+          onPress={() => {
+            console.log('Add Event pressed');
+            console.log(this.state);
+          }}
+        >
+          <Text style={{fontSize: 16, color: "#007aff"}}>Add Event</Text>
+        </TouchableOpacity>
+      </View>
+    );
+  }
+}
+class DeleteEvent extends React.Component {
+  constructor(props) {
+    super(props);
+    this.props = props;
+    this.state = {events: props.event};
+  }
+  render() {
+    return (
+      <View style={this.props.style}>
+        <TouchableOpacity
+          onPress={() => {
+            console.log('Delete Event pressed');
+            console.log(this.state);
+          }}
+        >
+          <Text style={{fontSize: 14, color: "#007aff"}}>Delete Event</Text>
+        </TouchableOpacity>
+      </View>
+    );
+  }
+}
 
 export default class CalendarScreen extends React.Component {
   async componentDidMount() {
@@ -10,76 +52,73 @@ export default class CalendarScreen extends React.Component {
       'Inter-Black': require('../assets/fonts/Inter-Black.otf'),
       'Inter-SemiBoldItalic':
         'https://rsms.me/inter/font-files/Inter-SemiBoldItalic.otf?v=3.12',
-  });
+    });
   }
-  render()
-  { 
-          //<Text style={styles.bold}>For scheduling</Text>
-          //<Text style={styles.italics}> 
-           // Lots of appointments as well as milestones for pregnancy 
-          //</Text>
-        //<View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-        /*
-          <CalendarList
-            pagingEnabled={true}
-            horizontal={true}
-            onDayPress={(date) => {console.log('selected day', typeof date, date)}}
-            theme={{
-              todayTextColor: '#dc2546',
-              textDayFontWeight: '500'
-            }}
-          />
-          */
-      return (
-          <Agenda
-            items={{
-              '2021-04-18': [{name: 'deadline for me'}],
-              '2021-04-20': [{name: 'hard deadline'}],
-              '2021-04-16': [{name: 'Today'}],
-              '2021-04-30': [{name: '31'}, {name: '32'}],
-              '2021-05-02': [{name: 'Next month', text: 'May second'}]
-            }}
-            theme={{
-              selectedDayBackgroundColor: '#9e1b32',
-              todayTextColor: '#dc2546',
-              dotColor: '#9e1b32',
-            }}
-            renderItem={(item, firstItemInDay) => 
-              <Text>{item.name + ': ' + item.text}</Text>}
-            renderEmptyData={() => 
-              <View style={styles.centered}>
-                <Text style={styles.emptyData}>Nothing on this day</Text>
-              </View>
-            }
-          />
+  constructor(props) {
+    super(props);
+    this.state = { events: {
+      '2021-04-18': [{name: '2021-04-18-000', text: 'deadline for me'}],
+      '2021-04-20': [{name: '2021-04-20-000', text: 'hard deadline'}],
+      '2021-04-30': [{name: '2021-04-30-000', text: '30'}, 
+                     {name: '2021-04-30-001', text: '31'},
+                     {name: '2021-04-30-002', text: '32'}],
+      '2021-05-02': [{name: '2021-05-02-000', text: 'May second'}]
+    } };
+  }
+  eventRow(event) {
+    return (
+      <View style={{ flexDirection: 'row' }} >
+        <View style={{flex: 1, justifyContent: 'center', flexDirection: 'column'}}>
+          <Text>
+            {event.text}
+          </Text>
+        </View>
+        <DeleteEvent event={event} />
+      </View>
+    )
+  }
+  render() { 
+    return (
+      <Agenda
+        items={this.state.events}
+        theme={{
+          selectedDayBackgroundColor: '#9e1b32',
+          todayTextColor: '#dc2546',
+          dotColor: '#9e1b32',
+        }}
+        renderItem={(item, isFirstItemInDay) => {
+          if (isFirstItemInDay) {
+            return (
+              <View>
+                <View style={styles.addEventButton}>
+                  <AddEvent events={this.state.events[item.name.substr(0, 10)]} />
+                </View>
+                {this.eventRow(item)}
+              </View> 
+            );
+          }
+          return this.eventRow(item);
+        }}
+        renderEmptyData={() => 
+          <View>
+            <Text style={styles.emptyData}>Nothing on this day</Text>
+            <AddEvent />
+          </View>
+        }
+      />
     );
-        //</View>
   }
 }
 
 const styles = StyleSheet.create
 ({
+  addEventButton: {
+    justifyContent: 'flex-start',
+    flexDirection: 'row'
+  },
   emptyData: {
     fontSize: 20,
-    fontFamily: 'Inter-Black'
-  },
-  centered: {
-    alignItems: 'center'
-  },
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center'
-  },
-
-  bold: {
     fontFamily: 'Inter-Black',
-    fontSize: 12
+    alignSelf: 'center',
   },
-
-  italics: {
-    fontFamily: 'Inter-SemiBoldItalic',
-    fontSize: 12
-  }
 });
