@@ -1,8 +1,9 @@
 import * as Font from 'expo-font';
 import * as React from 'react';
 import { Text, Button, View, Image, StyleSheet, StatusBar, SectionList, SafeAreaView } from 'react-native';
+import QuestionDetails from './FAQData';
 
-const DATA = [ //This is where the week's facts will be listed
+/* const DATA = [ //This is where the week's facts will be listed
   {
     title: "Causes",
     data: ["Cause 1", "Cause 2", "Cause 3"]
@@ -15,7 +16,7 @@ const DATA = [ //This is where the week's facts will be listed
     title: "Contact Your Nurse If:",
     data: ["Bleeding starts", "Pain gets worse", "You faint or feel weak"]
   },
-];
+]; */
 
 const Item = ({ title }) => (
   <View style={styles.item}>
@@ -23,10 +24,10 @@ const Item = ({ title }) => (
   </View>
 );
 
-export default class Week1Screen extends React.Component {
+export default class QuestionDetailsScreen extends React.Component {
   async componentDidMount() {
      await Font.loadAsync({
-    'Inter-Black': require('../../assets/fonts/Inter-Black.otf'),
+    'Inter-Black': require('../assets/fonts/Inter-Black.otf'),
     'Inter-SemiBoldItalic':
       'https://rsms.me/inter/font-files/Inter-SemiBoldItalic.otf?v=3.12',
   });
@@ -37,12 +38,12 @@ export default class Week1Screen extends React.Component {
         <SafeAreaView style={styles.container}>
           <View style={styles.box}>
             <Text style={styles.blackText}>
-              Will my question be answered?
+              {this.props.route.params.question}
             </Text>
           </View>
           <View>
             <Text style={styles.blackText}>
-              Yes, that is what this page is for. Here is where information on this topic will be listed.
+              {this.props.route.params.answer}
             </Text>
           </View>
         </SafeAreaView>
