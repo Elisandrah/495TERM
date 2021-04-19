@@ -4,8 +4,7 @@
 // So, I modified two of their files to fix it. I disabled the ability to swipe the list.
 // Also, to select another day, the user must tap the knob or slide down the calendar.
 // The result is still user friendly, I think. Actually, the way the list swiped up, but 
-// not back down, was kind of annoying. I put the changed files in the patches_backup
-// folder in case they get replaced by an installation.
+// not back down, was kind of annoying. I put the changed files in assets/patches_backup.
 
 import * as Font from 'expo-font';
 import * as React from 'react';
