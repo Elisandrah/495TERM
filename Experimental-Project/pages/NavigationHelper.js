@@ -19,7 +19,7 @@ import FAQScreen from './FAQScreen';
 import WeeklyInfoScreen from './WeeklyInfoScreen';
 import SearchableSymptoms from './SearchableSymptoms';
 
-import Question1 from './questions_detail_pages/Question1';
+import QuestionDetailsScreen from './QuestionDetailsScreen';
 
 import Week1 from './weekly_info_pages/Week1';
 
@@ -40,7 +40,7 @@ export default class InfoNavigationHelper extends React.Component {
           <Stack.Screen name="Weekly Information" component={WeeklyInfoScreen} />
           <Stack.Screen name="SearchableSymptoms" component={SearchableSymptoms} />
 
-          <Stack.Screen name="Question1" component={Question1}/>
+          <Stack.Screen name="QuestionDetailsScreen" component={QuestionDetailsScreen}/>
 
           <Stack.Screen name="Week 1" component={Week1}/>
 
