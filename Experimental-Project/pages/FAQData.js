@@ -19,4 +19,20 @@ export const QuestionDetails = [
       }
     ]
   },
+  {
+    // Source: www.webmd.com/baby/guide/inducing-labor
+    title: 'Labor Induction',
+    data: [
+      {
+        id: 'Induction1',
+        question: "What is labor induction?",
+        answer: "Inducing labor, or induction, is the act of using drugs or a procedure to start the birth sooner, instead of waiting for labor to start naturally. Sometimes induction is the right source, but it has its risks and doesn't always work. If it doesn't, you may need another induction or a c-section. Most experts say it's bets to let labor begin on its own and progress naturally unless there is a clear medical reason."
+      },
+      {
+        id: 'Induction2',
+        question: 'Why is labor induced?',
+        answer: "1 out of 4 women in the U.S. start labor with induction. Some reasons: You're 1-2 weeks past your due date. Your water breaks but labor doesn't start, raising the risk of infection. A problem puts you or your baby's health at risk; such problems include conditions like diabetes, high blood pressure, preeclampsia, or eclampsia. Some doctors recommend \"elective\" inductions for non-medical reasons. Maybe you live far from the hospital or maybe your doctor asks you to accommodate their schedule. Experts say you should reconsider though, because induction poses some risks."
+      }
+    ]
+  }
 ];
