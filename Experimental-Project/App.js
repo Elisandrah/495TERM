@@ -8,6 +8,7 @@ import { NavigationContainer } from '@react-navigation/native';
 //import LoginScreen from './pages/LoginScreen';
 import DrawerContainer from './pages/DrawerContainer';
 import AuthContext from './Context';
+import SignUpScreen from './pages/SignUpScreen';
 
 import * as React from 'react';
 //import React, { useReducer, useMemo, useEffect, createContext } from 'react';
@@ -31,12 +32,14 @@ function SplashScreen() {
   );
 }
 
+
 function LoginScreen()
 {
   const [username, setUsername] = React.useState('');
   const [password, setPassword] = React.useState('');
 
   const { signIn } = React.useContext(AuthContext);
+  const { signUp } = React.useContext(AuthContext);
 
   return( //Renders the image and places the login stuff
     <View style={StyleSheet.InputView}>
@@ -59,10 +62,19 @@ function LoginScreen()
         onChangeText={setPassword}
         secureTextEntry={true}
       />
+
       <Button
-        title="Log in"
+        buttonStyle={{ margin: 10, marginTop: 50 }}
+        title="Log In"
         color = "#9E1B32"
         onPress={() => signIn({ username, password })}
+      />
+      
+      <Button
+        buttonStyle={{ margin: 10, marginTop: 50 }}
+        title="Sign Up"
+        color = "#9E1B32"
+        onPress={() => signUp()}
       />
     </View>
     );
@@ -78,25 +90,37 @@ export default function App({ navigation })
           return {
             ...prevState,
             userToken: action.token,
+            isSignUp: false,
             isLoading: false,
           };
         case 'SIGN_IN':
           return {
             ...prevState,
             isSignout: false,
+            isSignUp: false,
             userToken: action.token,
           };
         case 'SIGN_OUT':
           return {
             ...prevState,
             isSignout: true,
+            isSignUp: false,
             userToken: null,
           };
+        case 'SIGN_UP':
+          return {
+            ...prevState,
+            isSignout: false,
+            isLoading: false,
+            isSignUp: true,
+            userToken: null,
+          }
       }
     },
     {
       isLoading: true,
       isSignout: false,
+      isSignUp: false,
       userToken: null,
     }
   );
@@ -127,7 +151,7 @@ export default function App({ navigation })
       signOut: () => dispatch({ type: 'SIGN_OUT'}),
       signUp: async data => {
         //THIS IS WHERE A USER WOULD BE DIRECTED TOWARDS A SERVER TO RECIEVE A TOKEN TO LOGIN WITH
-        dispatch({ type: 'SIGN_IN', token: 'dummy_auth_token' });
+        dispatch({ type: 'SIGN_UP', token: 'dummy_auth_token' });
       },
     }),
     []
@@ -137,8 +161,8 @@ export default function App({ navigation })
     <AuthContext.Provider value={authContext}>
       <NavigationContainer>
         <Stack.Navigator>
-          {state.isLoading ? (
-            <Stack.Screen name="Splash" component={SplashScreen} />
+          {state.isSignUp ? (
+            <Stack.Screen name="SignUp" component={SignUpScreen} options={{ headerShown: false }}/>
             ) : state.userToken == null ? (
               <Stack.Screen name='Login' component={LoginScreen} options={{ headerShown: false, animationTypeForReplace: state.isSignout ? 'pop' : 'push' }}/>
             ) : (
