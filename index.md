@@ -1,9 +1,7 @@
 ---
 layout: default
 ---
----
-youtubeId: UC6yM-u5yG6DX4gErSkUHUug
----
+
 
 # Goals
 1. Create an app to help mothers and nurses stay informed of their maternal health.
@@ -30,4 +28,4 @@ youtubeId: UC6yM-u5yG6DX4gErSkUHUug
 
 
 ## App Demo ##
-{% include youtubePlayer.html id=page.youtubeId %}
+https://www.youtube.com/watch?v=bJg-wmhseKc
