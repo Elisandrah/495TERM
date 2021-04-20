@@ -1,26 +1,8 @@
 import * as Font from 'expo-font';
 import * as React from 'react';
 import { Text, Button, View, Image, StyleSheet, FlatList, SafeAreaView, TouchableHighlight, ScrollView, TextInput, Switch } from 'react-native';
-import { SearchableFlatList } from "react-native-searchable-list";
-
-const DATA = [ //This generates the list, more can be added. Remember to add a navigation feature for it if adding more
-  {
-    id: 'Question1',
-    name: 'Question 1',
-    category: 'Question 1'
-  },
-  {
-    id: 'Question2',
-    name: 'Question 2',
-    category: 'Question 2'
-  },
-  {
-    id: 'Question3',
-    name: 'Question 3',
-    category: 'Question 3'
-  },
-
-];
+import { SearchableSectionList } from "react-native-searchable-list";
+import { QuestionDetails } from './FAQData';
 
 const Item = ({ title }) => (
   <View style={styles.item}>
@@ -33,7 +15,7 @@ export default class FAQScreen extends React.Component {
     super(props);
     this.state = {
       searchTerm: "",
-      searchAttribute: "category",
+      searchAttribute: "question",
       ignoreCase: true
     };
   }
@@ -52,27 +34,30 @@ export default class FAQScreen extends React.Component {
       return (
         <View style={{ flex: 1 }}>
         <View style={styles.pageContainer}>
-          <ScrollView>
             <View style={styles.searchInputs}>
               <TextInput
                 style={styles.search}
-                placeholder={"Search for your symptoms"}
+                placeholder={"Search for your question"}
                 onChangeText={searchTerm => this.setState({ searchTerm })}
               />
             </View>
-            <SearchableFlatList
+            <SearchableSectionList
+              sections={QuestionDetails}
               style={styles.list}
-              data={DATA}
+              data={QuestionDetails}
               searchTerm={searchTerm}
               searchAttribute={searchAttribute}
               ignoreCase={ignoreCase}
+              searchByTitle={false}
+              renderSectionHeader={({ section: { title } }) => ( <Text style={{ fontWeight: "bold" }}>{title}</Text> )}
               renderItem={({ item }) => (
                 <View style={{ margin: 20 }}>
-                  <TouchableHighlight underlayColor="#FFFFFF" onPress={() => this.props.navigation.navigate(item.id)}>
+                  <TouchableHighlight underlayColor="#FFFFFF" onPress={() =>
+                    this.props.navigation.navigate('QuestionDetailsScreen', {question: item.question, answer: item.answer})}>
                     <View style={styles.button}>
                       <Text style=
                         {styles.buttonText}>
-                        {item.name}
+                        {item.question}
                       </Text>
                     </View>
                   </TouchableHighlight>
@@ -80,7 +65,6 @@ export default class FAQScreen extends React.Component {
               )}
               keyExtractor={item => item.id}
             />
-          </ScrollView>
         </View>
       </View>
     );
@@ -146,6 +130,6 @@ const styles = StyleSheet.create({
   buttonText: {
     color: 'white',
     textAlign: 'center',
-    fontSize: 24
+    fontSize: 18
   }
 });

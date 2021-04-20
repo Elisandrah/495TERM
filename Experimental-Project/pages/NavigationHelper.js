@@ -19,12 +19,18 @@ import FAQScreen from './FAQScreen';
 import WeeklyInfoScreen from './WeeklyInfoScreen';
 import SearchableSymptoms from './SearchableSymptoms';
 
-import Question1 from './questions_detail_pages/Question1';
+import QuestionDetailsScreen from './QuestionDetailsScreen';
 
-import Week1 from './weekly_info_pages/Week1';
+import Week28_30 from './weekly_info_pages/Week28_30';
+import Week30_32 from './weekly_info_pages/Week30_32';
+import Week32_34 from './weekly_info_pages/Week32_34';
+import Week34_36 from './weekly_info_pages/Week34_36';
+import Week37 from './weekly_info_pages/Week37';
+import Week38 from './weekly_info_pages/Week38';
+import Week39 from './weekly_info_pages/Week39';
+import Week40 from './weekly_info_pages/Week40';
 
-import Symptom1 from './symptoms_detail_pages/Symptom1';
-import Symptom2 from './symptoms_detail_pages/Symptom2';
+import SymptomsDetailsScreen from './SymptomsDetailsScreen';
 
 const Stack = createStackNavigator();
 
@@ -40,12 +46,17 @@ export default class InfoNavigationHelper extends React.Component {
           <Stack.Screen name="Weekly Information" component={WeeklyInfoScreen} />
           <Stack.Screen name="SearchableSymptoms" component={SearchableSymptoms} />
 
-          <Stack.Screen name="Question1" component={Question1}/>
+          <Stack.Screen name="QuestionDetailsScreen" component={QuestionDetailsScreen}/>
+          <Stack.Screen name="SymptomsDetailsScreen" component={SymptomsDetailsScreen}/>
 
-          <Stack.Screen name="Week 1" component={Week1}/>
-
-          <Stack.Screen name="Symptom1" component={Symptom1}/>
-          <Stack.Screen name="Symptom2" component={Symptom2}/>
+          <Stack.Screen name="Week28_30" component={Week28_30}/>
+          <Stack.Screen name="Week30_32" component={Week30_32}/>
+          <Stack.Screen name="Week32_34" component={Week32_34}/>
+          <Stack.Screen name="Week34_36" component={Week34_36}/>
+          <Stack.Screen name="Week37" component={Week37}/>
+          <Stack.Screen name="Week38" component={Week38}/>
+          <Stack.Screen name="Week39" component={Week39}/>
+          <Stack.Screen name="Week40" component={Week40}/>
         </Stack.Navigator>
       </NavigationContainer>
     )

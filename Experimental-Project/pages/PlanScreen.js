@@ -295,11 +295,56 @@ function MHPPostNatal({route, navigation}){
 
 }
 
-function getMHP({route}){
-  const {id, provider, age, weight, weightGain, bp, fundal, meds, urine, fetal, PhysStrengths, PhysRiskFactor,
-    SocialStrengths, SocialRiskFactor, Goals, Delivery, Complications, InfantWeight, Contraception, BreastFeeding} = route.params;
+const storeData = async (obj) => {
+  try {
+    await AsyncStorage.setItem(Date, obj)
+  } catch (e) {
+    return(
+      <View style = {styles.bold}>
+        <Text>The async failed</Text>
+      </View>
+    )
+  }
+}
+
+function getMHP(o){
 
   const dataExport = {
+    date: o.date,
+    id: o.id,
+    provider: o.provider,
+    age: o.age,
+    weight: o.weight,
+    weightGain: o.weightGain,
+    bp: o.bp,
+    funal: o.fundal,
+    meds: o.meds,
+    urine: o.urine,
+    fetal: o.fetal,
+    PhysStrengths: o.PhysStrengths,
+    PhysRiskFactor: o.PhysRiskFactor,
+    SocialStrengths: o.SocialStrengths,
+    SocialRiskFactor: o.SocialRiskFactor,
+    Goals: o.Goals,
+    Delivery: o.Delivery,
+    Complications: o.Complications,
+    InfantWeight: o.InfantWeight,
+    Contraception: o.Contraception,
+    BreastFeeding: o.BreastFeeding
+  }
+
+  var obj = JSON.stringify(dataExport)
+  storeData(obj);
+  return obj;
+}
+
+function DisplayMHP({route, navigation}){
+  const {id, provider, age, weight, weightGain, bp, fundal, meds, urine, fetal, PhysStrengths, PhysRiskFactor,
+  SocialStrengths, SocialRiskFactor, Goals, Delivery, Complications, InfantWeight, Contraception, BreastFeeding} = route.params;
+
+  var date = new Date().toString();
+  const MHPObj = {
+    date: date,
     id: id,
     provider: provider,
     age: age,
@@ -322,20 +367,13 @@ function getMHP({route}){
     BreastFeeding: BreastFeeding
   }
 
-  var obj = JSON.parse(dataExport)
-  return obj
-}
-
-function DisplayMHP({route, navigation}){
-  const {id, provider, age, weight, weightGain, bp, fundal, meds, urine, fetal, PhysStrengths, PhysRiskFactor,
-  SocialStrengths, SocialRiskFactor, Goals, Delivery, Complications, InfantWeight, Contraception, BreastFeeding} = route.params;
-
-  getMHP
+  //getMHP(MHPObj);
 
 
   if (Delivery != '') { //Display Postnatal Information
     return(
       <View style={styles.bold}>
+        <Text>Todays Date is: {date}</Text>
         <Text>ID entered is {id}</Text>
         <Text>Provider entered is {provider}</Text>
         <Text>Age entered is {age}</Text>
@@ -361,6 +399,7 @@ function DisplayMHP({route, navigation}){
   else{ //Display information without Postnatal
     return(
       <View style={styles.bold}>
+        <Text>Todays Date is: {date}</Text>
         <Text>ID entered is {id}</Text>
         <Text>Provider entered is {provider}</Text>
         <Text>Age entered is {age}</Text>
@@ -381,8 +420,11 @@ function DisplayMHP({route, navigation}){
   }
 }
 
-function MHPHistory({navigation}){
-
+async function MHPHistory({navigation}){
+  const keys = await AsyncStorage.getAllKeys();
+  const result = await AsyncStorage.multiGet(keys);
+    
+  
 }
 
 function MainPage({navigation}){
@@ -396,11 +438,13 @@ function MainPage({navigation}){
             </Text>
           </View>
         </TouchableHighlight>
-        <View style={styles.textBox}>
-          <Text style={styles.blackText}>
-            View your plan history
-          </Text>
-        </View>
+        <TouchableHighlight underlayColor="#FFFFFF" onPress={() => navigation.navigate("MHP History")}>
+          <View style={styles.textBox}>
+            <Text style={styles.blackText}>
+              View your plan history
+            </Text>
+          </View>
+        </TouchableHighlight>
       </View>
     </SafeAreaView>
   );
