@@ -16,6 +16,196 @@ export const QuestionDetails = [
         id: 'Nutrition2',
         question: "How much should I eat during pregnancy?",
         answer: "The popular saying is that pregnant women “eat for two,” but now we know that it’s dangerous to eat twice your usual amount of food during pregnancy. Instead of “eating for two,” think of it as eating twice as healthy.\n\nIf you are pregnant with one fetus, you need an extra 340 calories per day starting in the second trimester (and a bit more in the third trimester). That's roughly the calorie count of a glass of skim milk and half a sandwich. Women carrying twins should consume about 600 extra calories a day, and women carrying triplets should take in 900 extra calories a day."
+      },
+      {
+        id: 'Nutrition3',
+        question: 'Why should I take a prenatal vitamin?',
+        answer: 'Vitamins and minerals play important roles in all of your body functions. Eating healthy foods and taking a prenatal vitamin every day should supply all the vitamins and minerals you need during pregnancy.'
+      },
+      {
+        id: 'Nutrition4',
+        question: 'How many prenatal vitamins should I take each day?',
+        answer: 'Take only one serving of your prenatal supplement each day. Read the bottle to see how many pills make up one daily serving. If your obstetrician–gynecologist (ob-gyn) or other obstetric care provider thinks you need an extra amount of a vitamin or mineral, he or she may recommend it as a separate supplement.'
+      },
+      {
+        id: 'Nutrition5',
+        question: 'Can I take more prenatal vitamins to make up for a deficiency?',
+        answer: 'No, do not take more than the recommended amount of your prenatal vitamin per day. Some multivitamin ingredients, such as vitamin A, can cause birth defects at higher doses.'
+      },
+      {
+        id: 'Nutrition6',
+        question: 'What vitamins and minerals do I need during pregnancy?',
+        answer: 'During pregnancy you need folic acid, iron, calcium, vitamin D, choline, omega-3 fatty acids, B vitamins, and vitamin C. See the below table for recommended amounts.\n\n******Need table functionality? See if it can be implemented'
+      },
+      {
+        id: 'Nutrition7',
+        question: 'How can being overweight or obese cause problems during pregnancy?',
+        answer: 'Excess weight during pregnancy is associated with several pregnancy and childbirth complications, including:\n\nHigh blood pressure\n\nPreeclampsia\n\nPreterm birth\n\nGestational diabetes\n\nObesity during pregnancy also increases the risk of:\n\nMacrosomia\n\nBirth injury\n\nCesarean birth\n\nBirth defects, especially neural tube defects (NTDs)'
+      },
+      {
+        id: 'Nutrition8',
+        question: 'What is folic acid?',
+        answer: 'Folic acid, also known as folate, is a B vitamin that is important for pregnant women. Folic acid may help prevent major birth defects of the fetus’s brain and spine called neural tube defects (NTDs).'
+      },
+      {
+        id: 'Nutrition9',
+        question: 'How much folic acid should I take?',
+        answer: 'When you are pregnant you need 600 micrograms of folic acid each day. Because it’s hard to get this much folic acid from food alone, you should take a daily prenatal vitamin with at least 400 micrograms starting at least 1 month before pregnancy and during the first 12 weeks of pregnancy.\n\nWomen who have had a child with an NTD should take 4 milligrams (mg) of folic acid each day as a separate supplement at least 3 months before pregnancy and for the first 3 months of pregnancy. You and your ob-gyn or other obstetric care provider can discuss whether you need to supplement with more than 400 micrograms daily.'
+      },
+      {
+        id: 'Nutrition10',
+        question: 'Why is iron important during pregnancy?',
+        answer: 'Iron is used by your body to make the extra blood that you and your fetus need during pregnancy. Women who are not pregnant need 18 mg of iron per day. Pregnant women need more, 27 mg per day. This increased amount is found in most prenatal vitamins.'
+      },
+      {
+        id: 'Nutrition11',
+        question: 'How can I make sure I’m getting enough iron?',
+        answer: 'In addition to taking a prenatal vitamin with iron, you should eat iron-rich foods such as beans, lentils, enriched breakfast cereals, beef, turkey, liver, and shrimp. You also should eat foods that help your body absorb iron, including orange juice, grapefruit, strawberries, broccoli, and peppers.'
+      },
+      {
+        id: 'Nutrition12',
+        question: 'What is calcium?',
+        answer: 'Calcium is a mineral that builds your fetus’s bones and teeth. Women who are age 18 or younger need 1,300 mg of calcium per day. Women who are 19 or older need 1,000 mg per day.'
+      },
+      {
+        id: 'Nutrition13',
+        question: 'What foods contain calcium?',
+        answer: 'Milk and other dairy products, such as cheese and yogurt, are the best sources of calcium. If you have trouble digesting milk products, you can get calcium from other sources, such as broccoli, fortified foods (cereals, breads, and juices), almonds and sesame seeds, sardines or anchovies with the bones, and dark green leafy vegetables. You also can get calcium from calcium supplements.'
+      },
+      {
+        id: 'Nutrition14',
+        question: 'What does vitamin D do in the body?',
+        answer: 'Vitamin D works with calcium to help the fetus’s bones and teeth develop. Vitamin D also is essential for healthy skin and eyesight. All women, pregnant or not, need 600 international units of vitamin D a day.'
+      },
+      {
+        id: 'Nutrition15',
+        question: 'What foods contain vitamin D?',
+        answer: 'Good sources of vitamin D include fortified milk and breakfast cereal, fatty fish (salmon and mackerel), fish liver oils, and egg yolks.'
+      },
+      {
+        id: 'Nutrition16',
+        question: 'How will I know if I’m getting enough vitamin D?',
+        answer: 'Many people do not get enough vitamin D. If your ob-gyn or other obstetric care provider thinks you may have low levels of vitamin D, a test can be done to check the level in your blood. If it is below normal, you may need to take a vitamin D supplement.'
+      },
+      {
+        id: 'Nutrition17',
+        question: 'What is choline?',
+        answer: 'Choline plays a role in your fetus’s brain development. It also may help prevent some common birth defects. Experts recommend that pregnant women get 450 mg of choline each day.'
+      },
+      {
+        id: 'Nutrition18',
+        question: 'What foods contain choline?',
+        answer: 'Choline can be found in chicken, beef, eggs, milk, soy products, and peanuts. Although the body produces some choline on its own, it doesn’t make enough to meet all your needs while you are pregnant. It’s important to get choline from your diet because it is not found in most prenatal vitamins.'
+      },
+      {
+        id: 'Nutrition19',
+        question: 'What are omega-3 fatty acids?',
+        answer: 'Omega-3 fatty acids are a type of fat found naturally in many kinds of fish. Omega-3s may be important for brain development before and after birth.'
+      },
+      {
+        id: 'Nutrition20',
+        question: 'How much fish should I eat to get the omega-3 fatty acids that I need?',
+        answer: 'Women should eat at least two servings of fish or shellfish per week before getting pregnant, while pregnant, and while breastfeeding. A serving of fish is 8 to 12 ounces (oz).'
+      },
+      {
+        id: 'Nutrition21',
+        question: 'Which types of fish should I avoid?',
+        answer: 'Some types of fish have higher levels of mercury than others. Mercury is a metal that has been linked to birth defects. Do not eat bigeye tuna, king mackerel, marlin, orange roughy, shark, swordfish, or tilefish. Limit white (albacore) tuna to only 6 oz a week. You also should check advisories about fish caught in local waters.'
+      },
+      {
+        id: 'Nutrition22',
+        question: 'What other foods contain omega-3 fatty acids?',
+        answer: 'Flaxseed (ground or as oil) is a good source of omega-3s. Other sources of omega-3s include broccoli, cantaloupe, kidney beans, spinach, cauliflower, and walnuts.'
+      },
+      {
+        id: 'Nutrition23',
+        question: 'What are B vitamins?',
+        answer: 'B vitamins, including B1, B2, B6, B9, and B12, are key nutrients during pregnancy. These vitamins:\n\nGive you energy\n\nSupply energy for your fetus’s development\n\nPromote good vision\n\nHelp build the placenta'
+      },
+      {
+        id: 'Nutrition24',
+        question: 'What can I eat to get enough B vitamins?',
+        answer: 'Your prenatal vitamin should have the right amount of B vitamins that you need each day. Eating foods high in B vitamins is a good idea too, including liver, pork, chicken, bananas, beans, and whole-grain cereals and breads.'
+      },
+      {
+        id: 'Nutrition25',
+        question: 'What is vitamin C?',
+        answer: 'Vitamin C is important for a healthy immune system. It also helps build strong bones and muscles. During pregnancy, you should get at least 85 mg of vitamin C each day if you are older than 19, and 80 mg if you are younger than 19.'
+      },
+      {
+        id: 'Nutrition26',
+        question: 'What foods contain vitamin C?',
+        answer: 'You can get the right amount of vitamin C in your daily prenatal vitamin, and also from citrus fruits and juices, strawberries, broccoli, and tomatoes.'
+      },
+      {
+        id: 'Nutrition27',
+        question: 'How can I get enough water during pregnancy?',
+        answer: 'Drink throughout the day, not just when you are thirsty. Aim for 8 to 12 cups of water a day during pregnancy.'
+      },
+      {
+        id: 'Nutrition28',
+        question: 'How can I plan healthy meals during pregnancy?',
+        answer: 'There are many tools that can help you plan healthy meals. One useful tool is the MyPlate food-planning guide from the U.S. Department of Agriculture. The MyPlate website, www.choosemyplate.gov, can help you learn how to make healthy food choices at every meal.\n\nThe MyPlate website offers a MyPlate Plan, which shows how much to eat based on how many calories you need each day. The MyPlate Plan is personalized based on your:\n\nHeight\n\nPrepregnancy weight\n\nPhysical activity level\n\nThe MyPlate Plan can help you learn about choosing foods from each food group to get the vitamins and minerals you need during pregnancy. The MyPlate Plan also can help you limit calories from added sugars and saturated fats.'
+      },
+      {
+        id: 'Nutrition29',
+        question: 'What are the five food groups?',
+        answer: 'Grains\n\nFruits\n\nVegetables\n\nProtein foods\n\nDairy foods'
+      },
+      {
+        id: 'Nutrition30',
+        question: 'What are grains?',
+        answer: 'Bread, pasta, oatmeal, cereal, and tortillas are all grains. Whole grains are those that haven’t been processed and include the whole grain kernel. Oats, barley, quinoa, brown rice, and bulgur are all whole grains, as are products made with those grains. Look for the words “whole grain” on the product label. When you plan meals, make half of your grain servings whole grains.'
+      },
+      {
+        id: 'Nutrition31',
+        question: 'What types of fruit should I eat?',
+        answer: 'You can eat fresh, canned, frozen, or dried fruit. Juice that is 100 percent fruit juice also counts in the fruit category. Make half your plate fruit and vegetables during mealtimes.'
+      },
+      {
+        id: 'Nutrition32',
+        question: 'What types of vegetables should I eat?',
+        answer: 'You can eat raw, canned, frozen, or dried vegetables or drink 100 percent vegetable juice. Use dark leafy greens to make salads. Make half your plate fruit and vegetables during mealtimes.'
+      },
+      {
+        id: 'Nutrition33',
+        question: 'What are protein foods?',
+        answer: 'Meat, poultry, seafood, beans and peas, eggs, processed soy products, nuts, and seeds all contain protein. Eat a variety of protein each day.'
+      },
+      {
+        id: 'Nutrition34',
+        question: 'What are dairy foods?',
+        answer: 'Milk and milk products, such as cheese, yogurt, and ice cream, make up the dairy group. Make sure any dairy foods you eat are pasteurized. Choose fat-free or low-fat (1 percent) varieties.'
+      },
+      {
+        id: 'Nutrition35',
+        question: 'What part do oils and fats play in a healthy eating plan?',
+        answer: 'Oils and fats are another part of healthy eating. Although they are not a food group, they do give you important nutrients. During pregnancy, the fats that you eat provide energy and help build the placenta and many fetal organs.'
+      },
+      {
+        id: 'Nutrition36',
+        question: 'What are healthy sources of oils and fats?',
+        answer: 'Oils in food come mainly from plant sources, such as olive oil, nut oils, and grapeseed oil. They also can be found in certain foods, such as some fish, avocados, nuts, and olives. Most of the fats and oils in your diet should come from plant sources. Limit solid fats, such as those from animal sources. Solid fats also can be found in processed foods.'
+      },
+      {
+        id: 'Nutrition37',
+        question: 'How much weight should I gain during pregnancy?',
+        answer: 'Weight gain depends on your health and your body mass index (BMI) before you were pregnant. If you were underweight before pregnancy, you should gain more weight than a woman who had a normal weight before pregnancy. If you were overweight or obese before pregnancy, you should gain less weight. The amount of weight gain differs by trimester:\n\nDuring your first 12 weeks of pregnancy—the first trimester—you might gain only 1 to 5 pounds or none at all.\n\nIf you were a healthy weight before pregnancy, you should gain a half-pound to 1 pound per week in your second and third trimesters.\n\nSee the below table for recommended weight gain during pregnancy.\n\n******Also needs table functionality'
+      },
+      {
+        id: 'Nutrition38',
+        question: 'How many extra calories should I eat?',
+        answer: 'During the first trimester with one fetus, usually no extra calories are needed. In the second trimester, you will need an extra 340 calories per day, and in the third trimester, about 450 extra calories a day. To get the extra calories during the day, have healthy snacks on hand, such as nuts, yogurt, and fresh fruit.'
+      },
+      {
+        id: 'Nutrition39',
+        question: 'How can being overweight or obese cause problems during pregnancy?',
+        answer: 'Excess weight during pregnancy is associated with several pregnancy and childbirth complications, including:\n\nHigh blood pressure\n\nPreeclampsia\n\nPreterm birth\n\nGestational diabetes\n\nObesity during pregnancy also increases the risk of:\n\nMacrosomia\n\nBirth injury\n\nCesarean birth\n\nBirth defects, especially NTDs'
+      },
+      {
+        id: 'Nutrition40',
+        question: 'What if I am obese or overweight?',
+        answer: 'You and your ob-gyn or other obstetric care provider will work together to develop a nutrition and exercise plan. If you are gaining less than what the guidelines suggest, and if your fetus is growing well, gaining less than the recommended guidelines can have benefits. If your fetus is not growing well, changes may need to be made to your diet and exercise plan.'
       }
     ]
   },
