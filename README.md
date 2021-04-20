@@ -57,7 +57,7 @@ If above is not true, test case fails.
 2. Click the info tab at bottom right
 3. Select 'FAQ' button
 
-**Result**: Should bring user to frequently asked questions placeholder page
+**Result**: Should bring user to frequently asked questions page
 
 ### Unit Test 5 - Preventing accidential logout
 **Directions**
@@ -95,7 +95,7 @@ If above is not true, test case fails.
 3. Select 'Searchable Symptoms' button
 4. Type in 'Acid'
 
-**Result**: Should have the 'Acid Reflux' button be the only thing now avaialable.
+**Result**: Should have the 'Acid Reflux' button be the only thing now available.
 
 ### Unit Test 9 - Weekly Information
 **Directions**
@@ -125,6 +125,24 @@ If above is not true, test case fails.
 8. Repeat steps 1-3
 
 **Result**: Fields that were previously filled out should now be empty
+
+### Unit Test 12 - Search for a Question
+**Directions**
+1. Login to app
+2. Click info in the bottom right
+3. Select 'FAQ' button
+4. Type in 'Exercise'
+
+**Result**: Should show all the available questions regarding Exercise.
+
+### Unit Test 13 - Weekly Information Details Page
+**Directions**
+1. Login to app
+2. Click info in the bottom right
+3. Select 'Weekly Information' button
+4. Select a week such as 'Week 37'
+
+**Result**: Should display various detailed information regarding the particular selected week.
 
 ## Group Links
 Website available at https://elisandrah.github.io/495TERM/
