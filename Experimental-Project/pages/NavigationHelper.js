@@ -30,8 +30,7 @@ import Week38 from './weekly_info_pages/Week38';
 import Week39 from './weekly_info_pages/Week39';
 import Week40 from './weekly_info_pages/Week40';
 
-import Symptom1 from './symptoms_detail_pages/Symptom1';
-import Symptom2 from './symptoms_detail_pages/Symptom2';
+import SymptomsDetailsScreen from './SymptomsDetailsScreen';
 
 const Stack = createStackNavigator();
 
@@ -48,6 +47,7 @@ export default class InfoNavigationHelper extends React.Component {
           <Stack.Screen name="SearchableSymptoms" component={SearchableSymptoms} />
 
           <Stack.Screen name="QuestionDetailsScreen" component={QuestionDetailsScreen}/>
+          <Stack.Screen name="SymptomsDetailsScreen" component={SymptomsDetailsScreen}/>
 
           <Stack.Screen name="Week28_30" component={Week28_30}/>
           <Stack.Screen name="Week30_32" component={Week30_32}/>
@@ -57,9 +57,6 @@ export default class InfoNavigationHelper extends React.Component {
           <Stack.Screen name="Week38" component={Week38}/>
           <Stack.Screen name="Week39" component={Week39}/>
           <Stack.Screen name="Week40" component={Week40}/>
-
-          <Stack.Screen name="Symptom1" component={Symptom1}/>
-          <Stack.Screen name="Symptom2" component={Symptom2}/>
         </Stack.Navigator>
       </NavigationContainer>
     )

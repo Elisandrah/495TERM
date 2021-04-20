@@ -37,7 +37,7 @@ export default class FAQScreen extends React.Component {
             <View style={styles.searchInputs}>
               <TextInput
                 style={styles.search}
-                placeholder={"Search for your symptoms"}
+                placeholder={"Search for your question"}
                 onChangeText={searchTerm => this.setState({ searchTerm })}
               />
             </View>

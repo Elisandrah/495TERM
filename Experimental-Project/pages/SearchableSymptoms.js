@@ -2,25 +2,7 @@ import * as Font from 'expo-font';
 import * as React from 'react';
 import { Text, Button, View, Image, StyleSheet, FlatList, SafeAreaView, TouchableHighlight, ScrollView, TextInput, Switch } from 'react-native';
 import { SearchableFlatList } from "react-native-searchable-list";
-
-const DATA = [ //This generates the list, more can be added. Remember to add a navigation feature for it if adding more
-  {
-    id: 'Symptom1',
-    name: 'Symptom 1',
-    category: 'Symptom 1'
-  },
-  {
-    id: 'Symptom2',
-    name: 'Symptom 2',
-    category: 'Symptom 2'
-  },
-  {
-    id: 'Symptom3',
-    name: 'Symptom 3',
-    category: 'Symptom 3'
-  },
-
-];
+import { SymptomsDetails } from './SymptomsData';
 
 const Item = ({ title }) => (
   <View style={styles.item}>
@@ -33,7 +15,7 @@ export default class SearchableSymptoms extends React.Component {
     super(props);
     this.state = {
       searchTerm: "",
-      searchAttribute: "category",
+      searchAttribute: "details",
       ignoreCase: true
     };
   }
@@ -52,27 +34,27 @@ export default class SearchableSymptoms extends React.Component {
       return (
         <View style={{ flex: 1 }}>
         <View style={styles.pageContainer}>
-          <ScrollView>
             <View style={styles.searchInputs}>
               <TextInput
                 style={styles.search}
-                placeholder={"Search for your symptoms"}
+                placeholder={"Search your symptom to find related info"}
                 onChangeText={searchTerm => this.setState({ searchTerm })}
               />
             </View>
             <SearchableFlatList
               style={styles.list}
-              data={DATA}
+              data={SymptomsDetails}
               searchTerm={searchTerm}
               searchAttribute={searchAttribute}
               ignoreCase={ignoreCase}
               renderItem={({ item }) => (
                 <View style={{ margin: 20 }}>
-                  <TouchableHighlight underlayColor="#FFFFFF" onPress={() => this.props.navigation.navigate(item.id)}>
+                  <TouchableHighlight underlayColor="#FFFFFF" onPress={() =>
+                    this.props.navigation.navigate('SymptomsDetailsScreen', {id: item.id, details: item.details})}>
                     <View style={styles.button}>
                       <Text style=
                         {styles.buttonText}>
-                        {item.name}
+                        {item.id}
                       </Text>
                     </View>
                   </TouchableHighlight>
@@ -80,7 +62,6 @@ export default class SearchableSymptoms extends React.Component {
               )}
               keyExtractor={item => item.id}
             />
-          </ScrollView>
         </View>
       </View>
     );
