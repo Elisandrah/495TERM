@@ -88,6 +88,44 @@ If above is not true, test case fails.
 
 **Result**: Should bring user to searchable symptoms placeholder page
 
+### Unit Test 8 - Search for a Symptom
+**Directions**
+1. Login to app
+2. Click info in the bottom right
+3. Select 'Searchable Symptoms' button
+4. Type in 'Acid'
+
+**Result**: Should have the 'Acid Reflux' button be the only thing now avaialable.
+
+### Unit Test 9 - Weekly Information
+**Directions**
+1. Login to app
+2. Click info in the bottom right
+3. Select 'Weekly Information' button
+
+**Result**: Should bring user to the Weekly information select screen.
+
+### Unit Test 10 - Log out
+**Directions**
+1. Login to app
+2. Swipe to right
+3. Press 'Logout'
+
+**Result**: Should bring user back to the login screen.
+
+### Unit Test 11 - Data Reset
+**Directions**
+1. Login to app
+2. Click 'Plan" in bottom middle
+3. Click 'Fill out Maternal Health Plan'
+4. Enter data in fields
+5. View entered data
+6. Swipe right on the app
+7. Select 'Logout'
+8. Repeat steps 1-3
+
+**Result**: Fields that were previously filled out should now be empty
+
 ## Group Links
 Website available at https://elisandrah.github.io/495TERM/
 
