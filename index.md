@@ -27,5 +27,5 @@ layout: default
   needed features.
 
 
-## App Demo ##
-https://www.youtube.com/watch?v=bJg-wmhseKc
+## [App Demo](https://www.youtube.com/watch?v=bJg-wmhseKc) ##
+
