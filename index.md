@@ -1,6 +1,8 @@
 ---
 layout: default
-youtubeId: UC6yM-u5yG6DX4gErSkUHUug
+---
+---
+youtubeId: putYourIDHere
 ---
 
 # Goals
