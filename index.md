@@ -1,5 +1,6 @@
 ---
 layout: default
+youtubeId: UC6yM-u5yG6DX4gErSkUHUug
 ---
 
 # Goals
@@ -26,3 +27,5 @@ layout: default
   needed features.
 
 
+## App Demo ##
+{% include youtubePlayer.html id=page.youtubeId %}
