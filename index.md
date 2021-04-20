@@ -29,3 +29,5 @@ layout: default
 
 ## [App Demo](https://www.youtube.com/watch?v=bJg-wmhseKc) ##
 
+## [Presentation Video](https://www.youtube.com/watch?v=LC7dkhNgm4s) ##
+
