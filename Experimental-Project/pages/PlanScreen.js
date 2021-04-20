@@ -367,7 +367,7 @@ function DisplayMHP({route, navigation}){
     BreastFeeding: BreastFeeding
   }
 
-  getMHP(MHPObj);
+  //getMHP(MHPObj);
 
 
   if (Delivery != '') { //Display Postnatal Information
