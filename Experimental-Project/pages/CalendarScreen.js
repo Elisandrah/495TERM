@@ -35,27 +35,19 @@ export default class CalendarScreen extends React.Component {
     */
   }
   addEvent() {
-    console.log('ADD EVENT'); console.log(this.text);
     this.state.events[this.selectedDay] = [];
     this.state.events[this.selectedDay].push({name: this.selectedDay, text: this.text});
     this.setState({events: this.state.events});
-    console.log(this.state.events);
-    this.forceUpdate();
   }
   removeEvent(item) {
     delete this.state.events[item.name];
     this.setState({events: this.state.events});
-    this.forceUpdate();
   }
   changeEvent(item, text) {
     const date = item.name;
     const events = this.state.events;
     events[date][0].text = text;
     this.setState({events: events});
-    this.forceUpdate();
-  }
-  changeText(text) {
-    this.text = text;
   }
   render() { 
     return (
@@ -93,7 +85,7 @@ export default class CalendarScreen extends React.Component {
               <TextInput
                 style={styles.newEventText}
                 multiline={true}
-                onChangeText={(text) => {this.changeText(text)}}
+                onChangeText={(text) => {this.text=text}}
               >
                 {''}
               </TextInput>
@@ -118,7 +110,8 @@ const styles = StyleSheet.create
   },
   newEventText: {
     fontSize: 17,
-    flex: 1
+    flex: 1,
+    backgroundColor: 'white'
   },
   emptyData: {
     fontSize: 20,
