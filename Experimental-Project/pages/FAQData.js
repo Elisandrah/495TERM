@@ -11,7 +11,7 @@ export const QuestionDetails = [
     title: "Nutrition", //This is the question category.
     data: [
       {
-        id: 'Nutrition1',
+       id: 'Nutrition1',
         question: "Why is nutrition during pregnancy important?",
         answer: `Eating well is one of the best things you can do during pregnancy. Good nutrition helps you handle the extra demands on your body as your pregnancy progresses. The goal is to balance getting enough nutrients to support the growth of your fetus and maintaining a healthy weight.`
       },
@@ -320,7 +320,7 @@ export const QuestionDetails = [
       },
       {
         id: 'Coronavirus2',
-        questions: 'How does COVID-19 affect pregnant women?',
+        questions: "How does COVID-19 affect pregnant women?",
         answer: `Researchers are still learning how COVID-19 affects pregnant women. Current reports suggest that pregnant women have a higher risk for more severe illness from COVID-19 than nonpregnant women. Reports note that:\n\u2b24Pregnant women who have COVID-19 and show symptoms are more likely than nonpregnant women with COVID-19 and symptoms to need care in an intensive care unit (ICU), to need a ventilator (for breathing support), or to die from the illness. Still, the overall risk of severe illness and death for pregnant women is low.\n\u2b24Pregnant women with some health conditions, such as obesity and gestational diabetes, may have an even higher risk of severe illness, similar to nonpregnant women with these conditions.\n\u2b24Pregnant women who are Black or Hispanic have a higher rate of illness and death from COVID-19 than other pregnant women, but not because of biology. Black and Hispanic women are more likely to face social, health, and economic inequities that put them at greater risk of illness.`
       },
       {
