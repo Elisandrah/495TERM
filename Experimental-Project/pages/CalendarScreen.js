@@ -1,60 +1,13 @@
 // Calendar Tab. Uses react-native-calendars.
 // I had an issue with that library. When the agenda list swipes up to the next
 // day, the buttons I created get displayed in the wrong order, and there is not
-// even a reliable way to tell how they'll end up. So, I modified two of their
-// files to fix it. I disabled the ability to swipe the list. Also, to select
-// another day, the user must tap the knob or slide down the calendar. The
-// result is still user friendly, I think. Actually, the way the list swiped up,
-// but not back down, was kind of annoying. To apply the patches, I installed
-// patch-package. Simply running npm install like before will work.
+// even a reliable way to tell how they'll end up. So, my first version couldn't
+// work and I had to rewrite this file.
 
 import * as Font from 'expo-font';
 import * as React from 'react';
-import { Text, Button, View, StyleSheet, TouchableOpacity } from 'react-native';
+import { Text, TextInput, View, StyleSheet, Button } from 'react-native';
 import { Agenda } from 'react-native-calendars';
-
-class AddEvent extends React.Component {
-  constructor(props) {
-    super(props);
-    this.props = props;
-    this.state = {events: props.events};
-  }
-  render() {
-    return (
-      <View style={this.props.style}>
-        <TouchableOpacity
-          onPress={() => {
-            console.log('Add Event pressed');
-            console.log(this.state);
-          }}
-        >
-          <Text style={{fontSize: 16, color: "#007aff"}}>Add Event</Text>
-        </TouchableOpacity>
-      </View>
-    );
-  }
-}
-class DeleteEvent extends React.Component {
-  constructor(props) {
-    super(props);
-    this.props = props;
-    this.state = {events: props.event};
-  }
-  render() {
-    return (
-      <View style={this.props.style}>
-        <TouchableOpacity
-          onPress={() => {
-            console.log('Delete Event pressed');
-            console.log(this.state);
-          }}
-        >
-          <Text style={{fontSize: 14, color: "#007aff"}}>Delete</Text>
-        </TouchableOpacity>
-      </View>
-    );
-  }
-}
 
 export default class CalendarScreen extends React.Component {
   async componentDidMount() {
@@ -66,26 +19,43 @@ export default class CalendarScreen extends React.Component {
   }
   constructor(props) {
     super(props);
+    const now = new Date();
+    const month = ('00' + (now.getMonth() + 1)).slice(-2);
+    const day = ('00' + now.getDate()).slice(-2);
+    this.selectedDay = `${now.getFullYear()}-${month}-${day}`;
+    this.text = '';
+    this.state = {events: {}};
+    //this.state.events[this.selectedDay] = [{name: this.selectedDay, text: 'Today'}];
+    /*
     this.state = { events: {
-      '2021-04-18': [{name: '2021-04-18-000', text: 'deadline for me'}],
-      '2021-04-20': [{name: '2021-04-20-000', text: 'hard deadline'}],
-      '2021-04-30': [{name: '2021-04-30-000', text: '30'}, 
-                     {name: '2021-04-30-001', text: '31'},
-                     {name: '2021-04-30-002', text: '32'}],
-      '2021-05-02': [{name: '2021-05-02-000', text: 'May second'}]
+      '2021-04-18': [{name: '2021-04-18', text: 'Yesterday'}],
+      '2021-04-19': [{name: '2021-04-19', text: 'Today'}],
+      '2021-05-02': [{name: '2021-05-02', text: 'May second'}]
     } };
+    */
   }
-  eventRow(event) {
-    return (
-      <View style={{ flexDirection: 'row' }} >
-        <View style={{flex: 1, justifyContent: 'center', flexDirection: 'column'}}>
-          <Text>
-            {event.text}
-          </Text>
-        </View>
-        <DeleteEvent event={event} />
-      </View>
-    )
+  addEvent() {
+    console.log('ADD EVENT'); console.log(this.text);
+    this.state.events[this.selectedDay] = [];
+    this.state.events[this.selectedDay].push({name: this.selectedDay, text: this.text});
+    this.setState({events: this.state.events});
+    console.log(this.state.events);
+    this.forceUpdate();
+  }
+  removeEvent(item) {
+    delete this.state.events[item.name];
+    this.setState({events: this.state.events});
+    this.forceUpdate();
+  }
+  changeEvent(item, text) {
+    const date = item.name;
+    const events = this.state.events;
+    events[date][0].text = text;
+    this.setState({events: events});
+    this.forceUpdate();
+  }
+  changeText(text) {
+    this.text = text;
   }
   render() { 
     return (
@@ -96,25 +66,45 @@ export default class CalendarScreen extends React.Component {
           todayTextColor: '#dc2546',
           dotColor: '#9e1b32',
         }}
+        selected={this.selectedDay}
+        onDayPress={(day) => {this.selectedDay = day.dateString}}
         renderItem={(item, isFirstItemInDay) => {
-          if (isFirstItemInDay) {
-            return (
-              <View>
-                <View style={styles.addEventButton}>
-                  <AddEvent events={this.state.events[item.name.substr(0, 10)]} />
-                </View>
-                {this.eventRow(item)}
-              </View> 
-            );
-          }
-          return this.eventRow(item);
+          return (
+            <View style={styles.itemRow}>
+              <TextInput
+                style={{flex: 1}}
+                multiline={true}
+                onChangeText={(text) => {this.changeEvent(item, text)}}
+              >
+                {item.text}
+              </TextInput>
+              <Button
+                title='del'
+                onPress={() => {this.removeEvent(item)}} 
+              />
+            </View>
+          );
         }}
-        renderEmptyData={() => 
+        renderEmptyData={() => {
+          return (
           <View>
             <Text style={styles.emptyData}>Nothing on this day</Text>
-            <AddEvent />
+            <View style={styles.itemRow}>
+              <TextInput
+                style={styles.newEventText}
+                multiline={true}
+                onChangeText={(text) => {this.changeText(text)}}
+              >
+                {''}
+              </TextInput>
+              <Button
+                title='ok'
+                onPress={() => {this.addEvent()}}
+              />
+            </View>
           </View>
-        }
+          );
+        }}
       />
     );
   }
@@ -122,9 +112,13 @@ export default class CalendarScreen extends React.Component {
 
 const styles = StyleSheet.create
 ({
-  addEventButton: {
-    justifyContent: 'flex-start',
-    flexDirection: 'row'
+  itemRow: {
+    flexDirection: 'row',
+    justifyContent: 'space-between'
+  },
+  newEventText: {
+    fontSize: 17,
+    flex: 1
   },
   emptyData: {
     fontSize: 20,
