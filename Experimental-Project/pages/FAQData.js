@@ -441,6 +441,131 @@ export const QuestionDetails = [
     ]
   },
   {
+    title: 'Tobacco, Alcohol, Drugs',
+    data: [
+      {
+        id: 'Drugs1',
+        question: "What substances should I avoid during pregnancy?",
+        answer: `During pregnancy, women should not use tobacco, alcohol, marijuana, illegal drugs, or prescription medications for nonmedical reasons. Avoiding these substances and getting regular prenatal care are important to having a healthy pregnancy and a healthy baby. Counseling and treatment are available if you have a hard time quitting unhealthy substances on your own.`
+      },
+      {
+        id: 'Drugs2',
+        question: "How does nicotine affect pregnancy?",
+        answer: `When a woman smokes cigarettes during pregnancy, her fetus is exposed to many harmful chemicals. Nicotine is one of 4,000 chemicals that can pass from a pregnant woman to her fetus.\n\u2b24Nicotine damages a fetus’s brain and lungs. This damage is permanent. Nicotine also causes blood vessels to narrow, so less oxygen and fewer nutrients reach the fetus.`
+      },
+      {
+        id: 'Drugs3',
+        question: "What problems can happen if I smoke during pregnancy?",
+        answer: `Smoking during pregnancy increases the risk of preterm birth. Babies that are born too early may not be fully developed. They may be born with serious health problems. Some health problems, like cerebral palsy, can last a lifetime. Other problems, such as learning disabilities, may appear later in childhood or even in adulthood.`
+      },
+      {
+        id: 'Drugs4',
+        question: "How else can my baby be affected if I smoke during pregnancy?",
+        answer: `Babies born to women who smoked during pregnancy are at risk of other problems, including:\n\u2b24Low birth weight\n\u2b24Birth defects such as cleft lip (a split in the upper lip)\n\u2b24Higher rates of colic (uncontrollable crying and irritability)\n\u2b24Sudden infant death syndrome (SIDS)\n\u2b24Childhood asthma and obesity`
+      },
+      {
+        id: 'Drugs5',
+        question: "When should I stop smoking?",
+        answer: `Ideally, you should stop smoking before pregnancy. But stopping smoking during pregnancy is better than not stopping at all. If you are smoking when you find out you are pregnant, you should stop.`
+      },
+      {
+        id: 'Drugs6',
+        question: "Is secondhand smoke harmful during pregnancy?",
+        answer: `Yes. Secondhand smoke is other people’s smoke that you inhale. Breathing secondhand smoke during pregnancy increases the risk of having a low-birth-weight baby. Also, babies who are exposed to secondhand smoke have an increased risk of SIDS. They are more likely to have asthma attacks and ear infections. Take steps to avoid secondhand smoke at home and work.`
+      },
+      {
+        id: 'Drugs7',
+        question: "Can e-cigarettes/vapes be used during pregnancy?",
+        answer: `E-cigarettes are powered by a battery. They contain nicotine, plus flavoring and a propellant that may not be safe for you or your fetus. Avoid e-cigarettes—or “vaping”—during pregnancy.`
+      },
+      {
+        id: 'Drugs8',
+        question: "Can smokeless tobacco be used during pregnancy?",
+        answer: `Some people prefer to chew tobacco rather than smoke it. The products used are called smokeless tobacco. Smokeless tobacco also contains nicotine that can be passed to a fetus during pregnancy. These products also should be avoided.`
+      },
+      {
+        id: 'Drugs9',
+        question: "Can I drink any alcohol during pregnancy?",
+        answer: `Alcohol can interfere with the normal growth of a fetus and cause birth defects. When a woman drinks during pregnancy, her fetus can develop lifelong problems. It is safest not to drink at all while you are pregnant.`
+      },
+      {
+        id: 'Drugs10',
+        question: "What is fetal alcohol syndrome?",
+        answer: `Fetal alcohol syndrome (FAS) is the most severe disorder that can be caused by drinking during pregnancy. FAS can cause:\n\u2b24Growth problems\n\u2b24Mental disability\n\u2b24Behavioral problems\n\u2b24Abnormal facial features\n\u2b24FAS is most likely to occur in infants whose mothers drink heavily throughout pregnancy. But alcohol-related problems also can occur with lesser amounts of alcohol use.`
+      },
+      {
+        id: 'Drugs11',
+        question: "Where can I get help to stop drinking?",
+        answer: `If it is hard for you to stop drinking, help is available. Talk with your obstetrician-gynecologist (ob-gyn) or other obstetric care provider about your drinking habits. If you are dependent on alcohol, you may need specialized counseling and medical care.`
+      },
+      {
+        id: 'Drugs12',
+        question: "What effects does marijuana have during pregnancy?",
+        answer: `Marijuana used during pregnancy is associated with attention and behavioral problems in children. Some studies suggest that marijuana use may increase the risk of stillbirth and the risk that babies will be smaller than babies who are not exposed to marijuana before birth. For these reasons, you should not use marijuana in any form during pregnancy.`
+      },
+      {
+        id: 'Drugs13',
+        question: "I have a prescription for medical marijuana - is it safe to use it during pregnancy?",
+        answer: `The American College of Obstetricians and Gynecologists (ACOG) recommends that pregnant women and those planning to get pregnant stop using medical marijuana. You and your ob-gyn or other obstetric care provider can discuss other treatments that will be safer for your fetus.`
+      },
+      {
+        id: 'Drugs14',
+        question: "What should I know about drug use during pregnancy?",
+        answer: `Drug use can mean using illegal drugs, such as heroin, cocaine, and methamphetamines (“meth”). It also can mean using prescription medication in a way your doctor did not order, such as taking pain medication for the “high” even when you no longer have pain. Your ob-gyn or other obstetric care provider may ask about your use of drugs throughout your pregnancy.`
+      },
+      {
+        id: 'Drugs15',
+        question: "How do drugs affect the fetus early in pregnancy?",
+        answer: `The early stage of pregnancy is the time when main body parts of the fetus form. Using illegal drugs or misusing prescription medication early in pregnancy can cause birth defects and miscarriage.`
+      },
+      {
+        id: 'Drugs16',
+        question: "How do drugs affect the fetus later in pregnancy?",
+        answer: `During the later weeks of pregnancy, illegal drug use can interfere with the growth of the fetus and cause preterm birth and fetal death. Babies born to women who used illegal drugs during pregnancy may need specialized care after birth. These babies have an increased risk of long-term medical and behavioral problems.`
+      },
+      {
+        id: 'Drugs17',
+        question: "What are opioids?",
+        answer: `Opioids are a type of medication that relieves pain. They also release chemicals in the brain that have a calming effect. Doctors may prescribe opioids for people who have had surgery, dental work, or an injury. Prescribed opioids include oxycodone, hydromorphone, hydrocodone, fentanyl, and codeine`
+      },
+      {
+        id: 'Drugs18',
+        question: "Is it safe to take prescription opioids during pregnancy?",
+        answer: `When taken under a doctor’s care, opioids are safe for both you and your fetus. If you are prescribed an opioid before or during pregnancy, you and your ob-gyn or other obstetric care provider should discuss the risks and benefits of this treatment. It is important to take the medication only as prescribed.`
+      },
+      {
+        id: 'Drugs19',
+        question: "What is opioid use disorder?",
+        answer: `Most people who use a prescription opioid have no trouble stopping their use, but some people develop an addiction. This is called opioid use disorder. People with this disorder may look for other ways to get the drug when their prescription runs out. They may go from doctor to doctor to have new prescriptions written for them, or they may use illegal opioids.`
+      },
+      {
+        id: 'Drugs20',
+        question: "What problems can opioid use disorder cause during pregnancy?",
+        answer: `Misusing opioids during pregnancy can increase the risk of serious complications, including:\n\u2b24Placenta problems\n\u2b24Fetal growth problems\n\u2b24Preterm birth\n\u2b24Stillbirth`
+      },
+      {
+        id: 'Drugs21',
+        question: "What is the best treatment for opioid use disorder?",
+        answer: `The best treatment for opioid use disorder during pregnancy is opioid replacement medication, behavioral therapy, and counseling. The medications that are given are long-acting opioids. This means that they stay active in the body for a long time. These opioids, called methadone and buprenorphine, reduce cravings but do not cause the pleasant feelings that other opioids cause.`
+      },
+      {
+        id: 'Drugs22',
+        question: "Is it safe to take methadone or buprenorphine during pregnancy?",
+        answer: `Yes. Treatment with either methadone or buprenorphine makes it more likely that the fetus will grow normally and not be born too early. Based on many years of research, neither medicine has been found to cause birth defects.`
+      },
+      {
+        id: 'Drugs23',
+        question: "What is neonatal abstinence syndrome?",
+        answer: `Some babies born to women taking opioids, including methadone or buprenorphine taken for treatment of opioid use disorder, can have temporary withdrawal symptoms. This is called neonatal abstinence syndrome (NAS). Symptoms of NAS can include shaking and tremors, poor feeding or sucking, crying, fever, diarrhea, vomiting, and sleep problems.`
+      },
+      {
+        id: 'Drugs24',
+        question: "What is the treatment for a baby’s withdrawal symptoms?",
+        answer: `Not all babies will go through withdrawal. For those that do, some things can be done to make babies with NAS feel better, including swaddling, breastfeeding, and skin-to-skin contact. Some babies also may be given medication. A baby may need to stay in the neonatal intensive care unit (NICU) for a few days or weeks while taking the medication. NAS causes no known lasting physical or intellectual problems for babies.`
+      }
+    ]
+  },
+  {
     // Source: www.webmd.com/baby/guide/inducing-labor
     title: 'Labor Induction',
     data: [
